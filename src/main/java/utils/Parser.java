@@ -70,7 +70,7 @@ public class Parser {
     /**
      * Метод, создающий файл на основе коллекции
      */
-    public static void setFileFromCollection(){
+    public static boolean setFileFromCollection(){
         Hashtable<Long, StudyGroup> studyGroupHashtable = Collection.getStudyGroupHashtable();
         try {
             FileWriter fileWriter = new FileWriter("output.csv", false);
@@ -84,10 +84,13 @@ public class Parser {
 
             }
             fileWriter.flush();
-            fileWriter.close();
+            return true;
         }
         catch (IOException e){
+            if (e.getMessage().contains("(Отказано в доступе)")) System.out.println("Нет прав на запись в файл");
+            else
             System.out.println("Файл, в который должна происходить запись данных, не существует");
+            return false;
         }
     }
 

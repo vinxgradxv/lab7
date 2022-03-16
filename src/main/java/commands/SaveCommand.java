@@ -37,8 +37,7 @@ public class SaveCommand extends Command{
      *                or script
      */
     public void execute(String s, Scanner scanner){
-        Parser.setFileFromCollection();
-        System.out.println("Коллекция сохранена в файл output.csv");
+        if(Parser.setFileFromCollection()) System.out.println("Коллекция сохранена в файл output.csv");
         System.out.println(separatorString);
     }
 }
