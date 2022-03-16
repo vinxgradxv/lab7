@@ -56,13 +56,13 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Конструктор со всеми нужными параметрами
-     * @param name
-     * @param coordinates
-     * @param studentsCount
-     * @param expelledStudents
-     * @param shouldBeExpelled
-     * @param semesterEnum
-     * @param groupAdmin
+     * @param name имя
+     * @param coordinates координаты
+     * @param studentsCount количество студентов
+     * @param expelledStudents отчисленные студенты
+     * @param shouldBeExpelled студенты, которых стоит отчислить
+     * @param semesterEnum семестр
+     * @param groupAdmin админ группы
      */
     public StudyGroup(String name, Coordinates coordinates, Long studentsCount,
                       Integer expelledStudents, int shouldBeExpelled, Semester semesterEnum, Person groupAdmin){
@@ -151,7 +151,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, устанавливающий значение id
-     * @param id
+     * @param id уникальный идентификатор
      */
     public void setId(Long id) {
         this.id = id;
@@ -159,7 +159,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, устанавливающий значение name
-     * @param name
+     * @param name имя
      */
     public void setName(String name) {
         this.name = name;
@@ -167,7 +167,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, устанавливающий значение coordinates
-     * @param coordinates
+     * @param coordinates координаты
      */
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
@@ -175,7 +175,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, устанавливающий значение creationDate
-     * @param creationDate
+     * @param creationDate дата создания
      */
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
@@ -183,7 +183,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, устанавливающий значение studentsCount
-     * @param studentsCount
+     * @param studentsCount количество студентов
      */
     public void setStudentsCount(Long studentsCount) {
         this.studentsCount = studentsCount;
@@ -191,7 +191,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, устанавливающий значение expelledStudents
-     * @param expelledStudents
+     * @param expelledStudents отчисленные студенты
      */
     public void setExpelledStudents(Integer expelledStudents) {
         this.expelledStudents = expelledStudents;
@@ -199,7 +199,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, устанавливающий значение shouldBeExpelled
-     * @param shouldBeExpelled
+     * @param shouldBeExpelled студенты, которых стоит отчислить
      */
     public void setShouldBeExpelled(int shouldBeExpelled) {
         this.shouldBeExpelled = shouldBeExpelled;
@@ -207,7 +207,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, устанавливающий значение semesterEnum
-     * @param semesterEnum
+     * @param semesterEnum семестр
      */
 
     public void setSemesterEnum(Semester semesterEnum) {
@@ -216,7 +216,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, устанавливающий значение groupAdmin
-     * @param groupAdmin
+     * @param groupAdmin админ группы
      */
     public void setGroupAdmin(Person groupAdmin) {
         this.groupAdmin = groupAdmin;
@@ -243,7 +243,7 @@ public class StudyGroup implements Comparable<StudyGroup>{
 
     /**
      * Метод, сравнивающий объект StudyGroup с другим объектом того же класса
-     * @param o2
+     * @param o2 объект для сравнения
      * @return 1; 0; -1 в зависимости от их отношения друг к другу
      */
     @Override

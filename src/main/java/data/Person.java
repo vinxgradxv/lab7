@@ -29,11 +29,11 @@ public class Person implements Comparable<Person>{
 
     /**
      * Конструктор
-     * @param name
-     * @param height
-     * @param hairColor
-     * @param nationality
-     * @param location
+     * @param name имя
+     * @param height рост
+     * @param hairColor цвет волос
+     * @param nationality национальность
+     * @param location локация
      */
     public Person(String name, Long height, Color hairColor, Country nationality, Location location){
         this.name = name;
@@ -99,7 +99,7 @@ public class Person implements Comparable<Person>{
 
     /**
      * Метод, сравнивающий 2 объекта класса Coordinates
-     * @param o2
+     * @param o2 объект для сравнения
      * @return 1; 0; -1 в зависимости от отношения объектов друг к другу
      */
     @Override

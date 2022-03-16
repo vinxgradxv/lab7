@@ -24,9 +24,9 @@ public class Location implements Comparable<Location>{
 
     /**
      * Конструктор со всеми необходимыми параметрами
-     * @param x
-     * @param y
-     * @param z
+     * @param x Координата
+     * @param y Координата
+     * @param z Координата
      */
     public Location(Double x, Double y, double z){
         this.x = x;
@@ -73,7 +73,7 @@ public class Location implements Comparable<Location>{
 
     /**
      * Метод, устанавливающий значение координаты x
-     * @param x
+     * @param x координата
      */
     public void setX(Double x) {
         this.x = x;
@@ -81,7 +81,7 @@ public class Location implements Comparable<Location>{
 
     /**
      * Метод, устанавливающий значение координаты y
-     * @param y
+     * @param y координата
      */
     public void setY(Double y) {
         this.y = y;
@@ -89,7 +89,7 @@ public class Location implements Comparable<Location>{
 
     /**
      * Метод, устанавливающий значение координаты z
-     * @param z
+     * @param z координата
      */
     public void setZ(double z) {
         this.z = z;
@@ -105,7 +105,7 @@ public class Location implements Comparable<Location>{
     }
     /**
      * Метод, сравнивающий 2 объекта класса Coordinates
-     * @param o
+     * @param o объект для сравнения
      * @return 1; 0; -1 в зависимости от отношения объектов друг к другу
      */
     @Override

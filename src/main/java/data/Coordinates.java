@@ -15,8 +15,8 @@ public class Coordinates implements Comparable<Coordinates> {
 
     /**
      * Конструктор класса
-     * @param x
-     * @param y
+     * @param x Координата
+     * @param y Координата
      */
     public Coordinates(Long x, Long y){
         this.x = x;
@@ -25,7 +25,7 @@ public class Coordinates implements Comparable<Coordinates> {
 
     /**
      * Метод, устанавливающий значение координаты x
-     * @param x
+     * @param x Координата
      */
     public void setX(Long x) {
         this.x = x;
@@ -33,7 +33,7 @@ public class Coordinates implements Comparable<Coordinates> {
 
     /**
      * Метод, устанавливающий значение координаты y
-     * @param y
+     * @param y Координата
      */
     public void setY(Long y) {
         this.y = y;
@@ -76,7 +76,7 @@ public class Coordinates implements Comparable<Coordinates> {
 
     /**
      * Метод, сравнивающий 2 объекта класса Coordinates
-     * @param o2
+     * @param o2 объект для сравнения
      * @return 1; 0; -1 в зависимости от отношения объектов друг к другу
      */
     public int compareTo(Coordinates o2){

@@ -47,8 +47,6 @@ public abstract class Command {
      * @param s string for extract parameters from
      * @param scanner object that we use to read information from user input
      *                or script
-     * @throws NumberOutOfBoundsException
-     * @throws WrongAmountOfCoordinatesException
      */
     public abstract void execute(String s, Scanner scanner) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException;
 

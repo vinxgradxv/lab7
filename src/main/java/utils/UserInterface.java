@@ -64,8 +64,6 @@ public class UserInterface {
      * Метод, возвращающий команду
      * @param input строка, введенная пользователем
      * @return command
-     * @throws WrongNumberOfParametersException
-     * @throws CommandNotFoundException
      */
     public static Command getCommandFromInput(String input) throws CommandNotFoundException {
         String[] values = input.split(" ");
@@ -80,7 +78,8 @@ public class UserInterface {
 
     /**
      * Метод, реализующий режим чтения скрипта
-     * @param path
+     * @param path путь к файлу
+     * @param scanner обертка для потока ввода
      */
     public static void scriptMode(String path, Scanner scanner){
         int line = 0;
@@ -163,7 +162,7 @@ public class UserInterface {
 
     /**
      * Метод, возвращающий объект класса StudyGroup
-     * @param scanner
+     * @param scanner обертка для потока ввода
      * @return studyGroup
      */
     public static StudyGroup getElementFromUser(Scanner scanner){
@@ -380,10 +379,8 @@ public class UserInterface {
 
     /**
      * Метод, возвращающий объект класса StudyGroup из скрипта
-     * @param scanner
+     * @param scanner обертка для потока ввода
      * @return studyGroup
-     * @throws NumberOutOfBoundsException
-     * @throws WrongAmountOfCoordinatesException
      */
         public static StudyGroup getElementFromScript(Scanner scanner) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException {
         String nameS = scanner.nextLine();

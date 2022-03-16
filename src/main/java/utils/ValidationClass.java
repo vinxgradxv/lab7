@@ -16,8 +16,6 @@ public class ValidationClass {
      * @param nullable пользовательский ввод
      * @param leftRange Устанавливается ли левая граница
      * @param range значение границы
-     * @throws NumberFormatException
-     * @throws NumberOutOfBoundsException
      */
     public static void checkLong(String s, Boolean nullable, Boolean leftRange, Long range) throws NumberFormatException, NumberOutOfBoundsException{
         if(s.equals("") && !nullable){
@@ -35,7 +33,6 @@ public class ValidationClass {
      * Метод, проверяющий корректность Double значения
      * @param s пользовательский ввод
      * @param nullable пользовательский ввод
-     * @throws NumberFormatException
      */
     public static void checkDouble(String s, Boolean nullable) throws NumberFormatException{
         if(s.equals("") && !nullable){
@@ -51,8 +48,6 @@ public class ValidationClass {
      * @param nullable пользовательский ввод
      * @param leftRange Устанавливается ли левая граница
      * @param range значение границы
-     * @throws NumberFormatException
-     * @throws NumberOutOfBoundsException
      */
     public static void checkInt(String s, Boolean nullable, Boolean leftRange, Integer range) throws NumberFormatException, NumberOutOfBoundsException{
         if(s.equals("") && !nullable){
@@ -81,8 +76,6 @@ public class ValidationClass {
      * Метод, проверяющий корректность Coordinates значения
      * @param s пользовательский ввод
      * @param nullable пользовательский ввод
-     * @throws NumberOutOfBoundsException
-     * @throws WrongAmountOfCoordinatesException
      */
     public static void checkCoordinates(String s, Boolean nullable) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException{
         if (s.equals("") && !nullable){
@@ -100,7 +93,6 @@ public class ValidationClass {
      * Метод, проверяющий корректность Semester значения
      * @param s пользовательский ввод
      * @param nullable пользовательский ввод
-     * @throws IllegalArgumentException
      */
     public static void checkSemester(String s, Boolean nullable) throws IllegalArgumentException{
         if (s.equals("") && !nullable){
@@ -113,7 +105,6 @@ public class ValidationClass {
      * Метод, проверяющий корректность Color значения
      * @param s пользовательский ввод
      * @param nullable пользовательский ввод
-     * @throws IllegalArgumentException
      */
     public static void checkColor(String s, Boolean nullable) throws IllegalArgumentException{
         if (s.equals("") && !nullable){
@@ -126,7 +117,6 @@ public class ValidationClass {
      * Метод, проверяющий корректность Country значения
      * @param s пользовательский ввод
      * @param nullable пользовательский ввод
-     * @throws IllegalArgumentException
      */
     public static void checkCountry(String s, Boolean nullable) throws IllegalArgumentException{
         if (s.equals("") && !nullable){
@@ -139,7 +129,6 @@ public class ValidationClass {
      * Метод, проверяющий корректность Location значения
      * @param s пользовательский ввод
      * @param nullable пользовательский ввод
-     * @throws WrongAmountOfCoordinatesException
      */
     public static void checkLocation(String s, Boolean nullable) throws WrongAmountOfCoordinatesException{
         if (s.equals("") && !nullable){

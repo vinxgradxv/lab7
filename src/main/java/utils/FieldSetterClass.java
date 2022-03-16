@@ -11,7 +11,7 @@ import exceptions.WrongAmountOfCoordinatesException;
 public class FieldSetterClass {
     /**
      * Метод, устанавливающий значение groupName
-     * @param s
+     * @param s необработанная строка
      * @return groupName
      */
     public static String getGroupName(String s){
@@ -22,10 +22,8 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение groupCoordinates
-     * @param s
+     * @param s необработанная строка
      * @return groupCoordinates
-     * @throws NumberOutOfBoundsException
-     * @throws WrongAmountOfCoordinatesException
      */
     public static Coordinates getGroupCoordinates(String s) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException {
         Parser.exceptionPointer = "coordinates";
@@ -36,9 +34,8 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение groupStudentsCount
-     * @param s
+     * @param s необработанная строка
      * @return groupStudentsCount
-     * @throws NumberOutOfBoundsException
      */
     public static Long getGroupStudentsCount(String s) throws NumberOutOfBoundsException{
         Parser.exceptionPointer = "studentsCount";
@@ -49,9 +46,8 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение groupExpelledStudents
-     * @param s
+     * @param s необработанная строка
      * @return groupExpelledStudents
-     * @throws NumberOutOfBoundsException
      */
     public static Integer getGroupExpelledStudents(String s) throws NumberOutOfBoundsException{
         Parser.exceptionPointer = "expelledStudents";
@@ -62,9 +58,8 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение groupShouldBeExpelled
-     * @param s
+     * @param s необработанная строка
      * @return groupShouldBeExpelled
-     * @throws NumberOutOfBoundsException
      */
     public static int getGroupShouldBeExpelled(String s) throws NumberOutOfBoundsException{
         Parser.exceptionPointer = "shouldBeExpelled";
@@ -74,7 +69,7 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение groupSemesterEnum
-     * @param s
+     * @param s необработанная строка
      * @return groupSemesterEnum
      */
     public static Semester getGroupSemesterEnum(String s){
@@ -86,7 +81,7 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение adminName
-     * @param s
+     * @param s необработанная строка
      * @return adminName
      */
     public static String getAdminName(String s){
@@ -97,9 +92,8 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение adminHeight
-     * @param s
+     * @param s необработанная строка
      * @return adminHeight
-     * @throws NumberOutOfBoundsException
      */
     public static Long getAdminHeight(String s) throws NumberOutOfBoundsException{
         Parser.exceptionPointer = "groupAdmin - height";
@@ -110,7 +104,7 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение adminHairColor
-     * @param s
+     * @param s необработанная строка
      * @return adminHairColor
      */
     public static Color getAdminHairColor(String s){
@@ -122,7 +116,7 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение adminNationality
-     * @param s
+     * @param s необработанная строка
      * @return adminNationality
      */
     public static Country getAdminNationality(String s){
@@ -134,9 +128,8 @@ public class FieldSetterClass {
     }
     /**
      * Метод, устанавливающий значение adminLocation
-     * @param s
+     * @param s необработанная строка
      * @return adminLocation
-     * @throws WrongAmountOfCoordinatesException
      */
     public static Location getAdminLocation(String s) throws WrongAmountOfCoordinatesException {
         Parser.exceptionPointer = "groupAdmin - location";

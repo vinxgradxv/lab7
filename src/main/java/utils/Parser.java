@@ -26,8 +26,7 @@ public class Parser {
 
     /**
      * Метод, создающий коллекцию на основе файла
-     * @param file
-     * @throws FileNotFoundException
+     * @param file файл, из которого считываем данные
      */
     public static void setCollectionFromFile(File file) throws FileNotFoundException {
         Collection.initCollection();

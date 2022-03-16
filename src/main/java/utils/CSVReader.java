@@ -17,10 +17,8 @@ public class CSVReader {
 
     /**
      * Метод, возвращающий двумерный массив значений
-     * @param file
+     * @param file файл, из которого считываем данные
      * @return двумерный массив String
-     * @throws FileNotFoundException
-     * @throws IndexOutOfBoundsException
      */
     public static String[][] getValuesFromFile(File file) throws FileNotFoundException, IndexOutOfBoundsException {
         String[][] result = new String[1000][11];

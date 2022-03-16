@@ -28,8 +28,8 @@ public class Collection {
 
     /**
      * Метод, добавляющий новый элемент в коллекцию
-     * @param key
-     * @param studyGroup
+     * @param key ключ
+     * @param studyGroup экземпляр хранимого класса
      */
     public static void add(Long key, StudyGroup studyGroup){
         studyGroupHashtable.put(key, studyGroup);
@@ -37,7 +37,7 @@ public class Collection {
 
     /**
      * Метод, удаляющий элемент из коллекции
-     * @param key
+     * @param key ключ
      */
     public static void remove(Long key){
         if (studyGroupHashtable.containsKey(key)) {
