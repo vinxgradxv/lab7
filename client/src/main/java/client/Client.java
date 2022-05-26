@@ -1,5 +1,7 @@
+package client;
 
 import commands.CommandManger;
+import data.User;
 import exceptions.NullValueException;
 import exceptions.NumberOutOfBoundsException;
 import utils.*;
@@ -8,7 +10,7 @@ import java.io.*;
 import java.net.*;
 
 public class Client {
-    private final static int PORT = 4531;
+    private final static int PORT = 4598;
     private static IOManager ioManager;
     private static DatagramSocket socket;
     private static InetAddress address;
@@ -16,6 +18,7 @@ public class Client {
     private static CommandManger commandManger = new CommandManger();
     private static SendManager sendManager;
     private static ReceiveManager receiveManager;
+    private static User currentUser = null;
 
     private static byte[] buf;
 
@@ -24,7 +27,7 @@ public class Client {
         PrintWriter writer = new PrintWriter(System.out, true);
         ioManager = new IOManager(reader, writer, "$");
         socket = new DatagramSocket();
-        socket.setSoTimeout(1000*1000);
+        socket.setSoTimeout(15*1000);
         address = InetAddress.getByName("localhost");
         sendManager = new SendManager(address, socket, PORT);
         requestMaker = new RequestMaker();
@@ -49,8 +52,11 @@ public class Client {
                 if (message != null) {
                     sendManager.sendMessage(message);
                     Response response = receiveManager.receiveMessage();
-
-
+                    if (response.getType() == ResponseType.USER){
+                        currentUser = response.getUser();
+                        ioManager.println("sasat");
+                        ioManager.println(response.getMessage());
+                    } else
                     if (response.getType() == ResponseType.SCRIPT) {
                         ioManager.turnOnFileMode(response.getMessage());
                     } else if (response.getType() == ResponseType.EXIT) {
@@ -70,6 +76,10 @@ public class Client {
                 ioManager.printerr("Не удалось связаться с сервером, попробуйте ввести команду еще раз");
             }
         }
+    }
+
+    public static User getCurrentUser(){
+        return currentUser;
     }
 
 

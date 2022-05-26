@@ -1,3 +1,4 @@
+package server;
 
 import org.apache.logging.log4j.Logger;
 import utils.Message;
@@ -51,6 +52,11 @@ public class ReceiveManager {
 
     public Message receiveMessage() throws IOException {
         byte[] receivingDataBuffer = new byte[2048];
+        inputPacket = new DatagramPacket(receivingDataBuffer, receivingDataBuffer.length);
+        socket.receive(inputPacket);
+        logger.info("Длина сообщения получена");
+        Integer size = deserializeObject(inputPacket.getData());
+        receivingDataBuffer = new byte[size];
         inputPacket = new DatagramPacket(receivingDataBuffer, receivingDataBuffer.length);
         socket.receive(inputPacket);
         logger.info("Сообщение получено");

@@ -9,6 +9,8 @@ import java.io.Serializable;
  * Класс, описывающий локацию
  */
 public class Location implements Comparable<Location>, Serializable {
+
+    private int id;
     /**
      * Координата x. Поле не может быть null
      */
@@ -39,7 +41,13 @@ public class Location implements Comparable<Location>, Serializable {
         setZ(z);
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * Метод, возвращающий координату x

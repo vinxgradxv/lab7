@@ -10,6 +10,8 @@ import java.io.Serializable;
  * Класс, описывающий человека
  */
 public class Person implements Comparable<Person>, Serializable {
+
+    private int id;
     /**
      *
      *  Имя человека. Поле не может быть null, Строка не может быть пустой
@@ -42,8 +44,16 @@ public class Person implements Comparable<Person>, Serializable {
      * @param location локация
      */
     public Person(String name, Long height, Color hairColor, Country nationality, Location location) throws NullValueException, NumberOutOfBoundsException {
-        setName(name); setHeight(height); setHairColor(hairColor);
+        setId(id); setName(name); setHeight(height); setHairColor(hairColor);
         setNationality(nationality); setLocation(location);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setName(String name) throws NullValueException {

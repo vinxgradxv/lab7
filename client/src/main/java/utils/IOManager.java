@@ -98,6 +98,7 @@ public class IOManager {
 
     public  void println(Object o) {
         writer.println(o);
+        writer.println("------------------------");
     }
 
     public  void printerr(Object o) {

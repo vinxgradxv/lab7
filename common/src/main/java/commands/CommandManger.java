@@ -35,6 +35,9 @@ public class CommandManger {
         commands.add(new SumCommand());
         commands.add(new CountGreaterSemesterCommand());
         commands.add(new FilterLessStCountCommand());
+        commands.add(new LogInCommand());
+        commands.add(new LogOutCommand());
+        commands.add(new SignUpCommand());
     }
 
     /**

@@ -3,6 +3,7 @@ package commands;
 
 
 import data.StudyGroup;
+import data.User;
 import utils.CollectionManager;
 import utils.Response;
 import utils.ResponseType;
@@ -41,7 +42,7 @@ public class ExecuteScriptCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection){
-        return new Response(ResponseType.SCRIPT, (String) param);
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
+        return new Response(ResponseType.SCRIPT, (String) param, user);
     }
 }

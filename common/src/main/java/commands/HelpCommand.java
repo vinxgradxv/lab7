@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import utils.CollectionManager;
 import utils.Response;
 import utils.ResponseType;
@@ -15,6 +16,7 @@ public class HelpCommand extends Command{
      */
     public HelpCommand(){
         parametersCount = 0;
+        isAuthorizationRequired = false;
     }
 
     /**
@@ -35,11 +37,11 @@ public class HelpCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection){
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
         String result = "";
         for(Command command:CommandManger.getCommands()){
-            result += command.getName() + " - " + command.getInfo()+"\n";
+            result += command.getName() + " " + command.getParameters()  + " - " + command.getInfo()+"\n";
         }
-        return new Response(ResponseType.RESULT, result);
+        return new Response(ResponseType.RESULT, result, user);
     }
 }

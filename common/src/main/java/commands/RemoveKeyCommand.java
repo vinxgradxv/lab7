@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import exceptions.NumberOutOfBoundsException;
 import utils.CollectionManager;
 import utils.Response;
@@ -37,11 +38,14 @@ public class RemoveKeyCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection) throws NumberOutOfBoundsException {
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) throws NumberOutOfBoundsException {
         Long longParam = (Long) param;
-        if (!studyGroupCollection.remove(longParam)){
-            return new Response(ResponseType.ERROR, "В коллекции нет элемента с таким ключом");
+        if (studyGroupCollection.getStudyGroupHashTable().get(longParam).getUser().getLogin().equals(user.getLogin())) {
+            if (!studyGroupCollection.remove(longParam)) {
+                return new Response(ResponseType.ERROR, "В коллекции нет элемента с таким ключом", user);
+            }
+            return new Response(ResponseType.RESULT, "Элемент был удален из коллекции", user);
         }
-        return new Response(ResponseType.RESULT, "Элемент был удален из коллекции");
+        return new Response(ResponseType.ERROR, "У вас нет прав на удаление этого элемента", user);
     }
 }

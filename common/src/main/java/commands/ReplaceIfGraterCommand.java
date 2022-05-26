@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import exceptions.NullValueException;
 import exceptions.NumberOutOfBoundsException;
 import exceptions.WrongAmountOfCoordinatesException;
@@ -40,22 +41,24 @@ public class ReplaceIfGraterCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException {
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException {
         Long longParam = (Long) param;
-        if (!studyGroupCollection.getStudyGroupHashTable().containsKey(longParam)){
-            return new Response(ResponseType.ERROR, "В коллекции нет элемента с таким ключом");
-        }
+        if (studyGroupCollection.getStudyGroupHashTable().get(longParam).getUser().getLogin().equals(user.getLogin())) {
+            if (!studyGroupCollection.getStudyGroupHashTable().containsKey(longParam)) {
+                return new Response(ResponseType.ERROR, "В коллекции нет элемента с таким ключом", user);
+            }
 
-        if (studyGroupCollection.getStudyGroupHashTable().get(longParam).compareTo(studyGroup) < 0){
-            try {
-                studyGroup.setId(studyGroupCollection.getStudyGroupHashTable().get(longParam).getId());
+            if (studyGroupCollection.getStudyGroupHashTable().get(longParam).compareTo(studyGroup) < 0) {
+                try {
+                    studyGroup.setId(studyGroupCollection.getStudyGroupHashTable().get(longParam).getId());
+                } catch (NullValueException e) {
+                    System.err.println("id не может быть null");
+                }
+                studyGroupCollection.add(longParam, studyGroup);
+                return new Response(ResponseType.RESULT, "Элемент был обновлен", user);
             }
-            catch (NullValueException e){
-                System.err.println("id не может быть null");
-            }
-            studyGroupCollection.add(longParam, studyGroup);
-            return new Response(ResponseType.RESULT, "Элемент был обновлен");
+            return new Response(ResponseType.RESULT, "Элемент не был обновлен", user);
         }
-        return new Response(ResponseType.RESULT, "Элемент не был обновлен");
+        return new Response(ResponseType.ERROR, "У вас нет прав на изменение этого элемента", user);
     }
 }

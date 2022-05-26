@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import utils.CollectionManager;
 import utils.Response;
 import utils.ResponseType;
@@ -34,14 +35,16 @@ public class ShowCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection){
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
         if (studyGroupCollection.getStudyGroupHashTable().isEmpty()){
-            return new Response(ResponseType.ERROR, "В коллекции нет элементов");
+            return new Response(ResponseType.ERROR, "В коллекции нет элементов", user);
         }
         String result = "";
-        for (StudyGroup st: studyGroupCollection.getStudyGroupHashTable().values()){
-            result += st.toString() + "\n";
+
+        for (Long key: studyGroupCollection.getStudyGroupHashTable().keySet()){
+            result += "Ключ = " + key + '\n' + studyGroupCollection.getStudyGroupHashTable().get(key).toString()
+                    + "\n" +  separatorString;
         }
-        return new Response(ResponseType.RESULT, result);
+        return new Response(ResponseType.RESULT, result, user);
     }
 }

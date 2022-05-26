@@ -52,6 +52,8 @@ public class StudyGroup implements Comparable<StudyGroup>, Serializable {
      */
     private Person groupAdmin;
 
+    private User user;
+
     /**
      * Конструктор без параметров
      */
@@ -74,6 +76,14 @@ public class StudyGroup implements Comparable<StudyGroup>, Serializable {
         setSemesterEnum(semesterEnum); setGroupAdmin(groupAdmin);
         creationDate = LocalDateTime.now();
         id = 0L;
+    }
+
+    public User getUser(){
+        return user;
+    }
+
+    public void setUser(User user){
+        this.user = user;
     }
 
     /**
@@ -261,8 +271,9 @@ public class StudyGroup implements Comparable<StudyGroup>, Serializable {
         String shouldBeExpelledS = "shouldBeExpelled = " + shouldBeExpelled;
         String semesterEnumS = "semesterEnum = " + semesterEnum;
         String groupAdminS = "groupAdmin: " + groupAdmin.toString();
+        String groupOwnerS = "groupOwner: " + user.getLogin();
         return idS + '\n' + nameS + '\n' + coordinatesS + '\n' + creationDateS + '\n' + studentsCountS + '\n' +
-                expelledStudentsS + '\n' + shouldBeExpelledS + '\n' + semesterEnumS + '\n' + groupAdminS;
+                expelledStudentsS + '\n' + shouldBeExpelledS + '\n' + semesterEnumS + '\n' + groupAdminS + '\n' + groupOwnerS;
     }
 
     /**

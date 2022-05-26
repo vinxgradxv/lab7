@@ -3,6 +3,7 @@ package commands;
 
 
 import data.StudyGroup;
+import data.User;
 import utils.CollectionManager;
 import utils.Response;
 import utils.ResponseType;
@@ -18,6 +19,7 @@ public class InfoCommand extends Command{
      */
     public InfoCommand(){
         parametersCount = 0;
+        isAuthorizationRequired = false;
     }
 
     /**
@@ -38,10 +40,10 @@ public class InfoCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection){
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
         return new Response(ResponseType.RESULT,
                 "Дата инициализации: " + studyGroupCollection.getInitializationDate() + "\n"
         + "Размер коллекции " + studyGroupCollection.getSize() + "\n"
-        + "Тип коллекции " + studyGroupCollection.getType());
+        + "Тип коллекции " + studyGroupCollection.getType(), user);
     }
 }

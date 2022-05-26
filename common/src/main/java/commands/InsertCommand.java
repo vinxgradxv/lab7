@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import exceptions.NullValueException;
 import exceptions.NumberOutOfBoundsException;
 import exceptions.WrongAmountOfCoordinatesException;
@@ -39,21 +40,18 @@ public class InsertCommand extends Command{
         return "Добавляет новый элемент с заданным ключом";
     }
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException
     {
-        try {
-            studyGroup.setId(studyGroupCollection.getMinFreeId());
-            studyGroupCollection.addIdToUsed(studyGroup.getId());
             Long longParam = (Long) param;
+            studyGroup.setUser(user);
             if (studyGroupCollection.getStudyGroupHashTable().containsKey(longParam)) {
-                return new Response(ResponseType.ERROR, "Объект с таким ключом уже есть в коллекции");
+                return new Response(ResponseType.ERROR, "Объект с таким ключом уже есть в коллекции", user);
             }
-            studyGroupCollection.add(longParam, studyGroup);
-            return new Response(ResponseType.RESULT, "Объект добавлен в коллекцию");
-        }catch (NullValueException e){
-            System.err.println("id не может быть null");
-        }
-        return null;
+            boolean res = studyGroupCollection.add(longParam, studyGroup);
+            if (res) {
+                return new Response(ResponseType.RESULT, "Объект добавлен в коллекцию", user);
+            }
+            else return new Response(ResponseType.ERROR, "Элемент не добавлен в коллекцию", user);
     }
 
 }

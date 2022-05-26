@@ -20,8 +20,10 @@ public class SendManager {
 
     public void sendMessage(Message message) throws IOException {
         byte[] buff = serialize(message);
-        DatagramPacket outPacket = new DatagramPacket(buff, buff.length, address, port);
         byte[] buffSize = serialize(buff.length);
+        DatagramPacket sizePacket = new DatagramPacket(buffSize, buffSize.length, address, port);
+        socket.send(sizePacket);
+        DatagramPacket outPacket = new DatagramPacket(buff, buff.length, address, port);
         socket.send(outPacket);
     }
 

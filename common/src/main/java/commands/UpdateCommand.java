@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import exceptions.NullValueException;
 import exceptions.NumberOutOfBoundsException;
 import exceptions.WrongAmountOfCoordinatesException;
@@ -42,27 +43,29 @@ public class UpdateCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException {
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException {
         Long longParam = (Long) param;
         StudyGroup st = null;
         Long kk = 0L;
-        for (Long key: studyGroupCollection.getStudyGroupHashTable().keySet()){
-            if (studyGroupCollection.getStudyGroupHashTable().get(key).getId() == longParam){
+        for (Long key : studyGroupCollection.getStudyGroupHashTable().keySet()) {
+            if (studyGroupCollection.getStudyGroupHashTable().get(key).getId().equals(longParam)) {
                 st = studyGroupCollection.getStudyGroupHashTable().get(key);
                 kk = key;
                 break;
             }
         }
-        if (st == null){
-            return new Response(ResponseType.ERROR, "В коллекции нет элемента с таким id");
+        if (st != null) {
+            if (st.getUser().getLogin().equals(user.getLogin())) {
+                if(studyGroupCollection.updateStudyGroup(kk, studyGroup, st)){
+                    return new Response(ResponseType.RESULT, "Элемент успешно изменен", user);
+                }
+                else return new Response(ResponseType.ERROR, "Элемент не был изменен", user);
+            } else {
+                return new Response(ResponseType.ERROR, "У вас нет прав на изменение данного элемента", user);
+            }
         }
-        try {
-            studyGroup.setId(st.getId());
+        else{
+            return new Response(ResponseType.ERROR, "Элемента с таким ключом нет", user);
         }
-        catch (NullValueException e){
-            System.err.println("id не может быть null");
-        }
-        studyGroupCollection.add(kk, studyGroup);
-        return new Response(ResponseType.RESULT, "Элемент обновлен");
     }
 }

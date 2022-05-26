@@ -10,6 +10,8 @@ import java.io.Serializable;
  * Класс, описывающий координаты
  */
 public class Coordinates implements Comparable<Coordinates>, Serializable {
+
+    private int id;
     /**
      * Координата x. Максимальное значение поля: 722, Поле не может быть null
      */
@@ -26,6 +28,14 @@ public class Coordinates implements Comparable<Coordinates>, Serializable {
      */
     public Coordinates(Long x, Long y) throws NumberOutOfBoundsException, NullValueException {
         setX(x); setY(y);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     /**

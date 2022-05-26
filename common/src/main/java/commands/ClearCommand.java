@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import utils.CollectionManager;
 import utils.Response;
 import utils.ResponseType;
@@ -38,10 +39,15 @@ public class ClearCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection){
-        if(studyGroupCollection.clean()){
-            return new Response(ResponseType.RESULT, "Коллекция очищена");
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
+        studyGroupCollection.setCurrentUser(user);
+        int count = studyGroupCollection.clean();
+        if(count > 0){
+            return new Response(ResponseType.RESULT, "Коллекция очищена", user);
         }
-        return new Response(ResponseType.ERROR, "В коллекции нет элементов");
+        else if (count == 0) {
+            return new Response(ResponseType.ERROR, "В коллекции нет элементов", user);
+        }
+        else return new Response(ResponseType.ERROR, "произошла ошибка во время проведения операции", user);
     }
 }

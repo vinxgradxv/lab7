@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import exceptions.NumberOutOfBoundsException;
 import utils.CollectionManager;
 import utils.Response;
@@ -37,15 +38,20 @@ public class RemoveGreaterKeyCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection) throws NumberOutOfBoundsException {
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) throws NumberOutOfBoundsException {
         Long longParam = (Long) param;
+        String result = "";
         int count = 0;
         for (Long key: studyGroupCollection.getStudyGroupHashTable().keySet()){
-            if (key > longParam){
+            if (key > longParam && studyGroupCollection.getStudyGroupHashTable().get(longParam).getUser().getLogin().equals(user.getLogin())){
                 count += 1;
+                result += "Элемент с id = " + studyGroupCollection.getStudyGroupHashTable().get(longParam).getId() + " удален из коллекции\n";
                 studyGroupCollection.remove(longParam);
             }
+            else if (key > longParam){
+                result += "Элемент с id = " + studyGroupCollection.getStudyGroupHashTable().get(longParam).getId() + " не удален из-за отсутствия прав владельца\n";
+            }
         }
-        return new Response(ResponseType.RESULT, "Из коллекции было удалено " + count + " элементов");
+        return new Response(ResponseType.RESULT, result + "Из коллекции было удалено " + count + " элементов", user);
     }
 }

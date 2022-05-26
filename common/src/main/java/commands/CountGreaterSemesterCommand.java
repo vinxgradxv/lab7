@@ -3,6 +3,7 @@ package commands;
 import data.Semester;
 import data.StudyGroup;
 
+import data.User;
 import utils.CollectionManager;
 import utils.Response;
 import utils.ResponseType;
@@ -40,7 +41,7 @@ public class CountGreaterSemesterCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection){
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
         Semester semesterParam = (Semester) param;
         int count = 0;
         for (StudyGroup st: studyGroupCollection.getStudyGroupHashTable().values()){
@@ -48,6 +49,6 @@ public class CountGreaterSemesterCommand extends Command{
                 count += 1;
             }
         }
-        return new Response(ResponseType.RESULT, "В коллекции " + count + " элементов с Semester больше заданного");
+        return new Response(ResponseType.RESULT, "В коллекции " + count + " элементов с Semester больше заданного", user);
     }
 }

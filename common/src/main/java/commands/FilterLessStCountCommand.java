@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import exceptions.NumberOutOfBoundsException;
 import utils.CollectionManager;
 import utils.Response;
@@ -36,7 +37,7 @@ public class FilterLessStCountCommand extends Command{
         return "Выводит все элементы коллекции, значение поле studentsCount меньше, чем заданное";
     }
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection) throws NumberOutOfBoundsException {
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) throws NumberOutOfBoundsException {
         Long longParam = (Long) param;
         int count = 0;
         String result = "";
@@ -46,7 +47,7 @@ public class FilterLessStCountCommand extends Command{
             }
         }
 
-        return new Response(ResponseType.RESULT, result);
+        return new Response(ResponseType.RESULT, result, user);
 
     }
 }

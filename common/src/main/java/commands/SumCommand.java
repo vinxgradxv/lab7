@@ -1,6 +1,7 @@
 package commands;
 
 import data.StudyGroup;
+import data.User;
 import utils.CollectionManager;
 import utils.Response;
 import utils.ResponseType;
@@ -34,14 +35,14 @@ public class SumCommand extends Command{
     }
 
 
-    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection){
+    public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
         long sum = 0;
         if (studyGroupCollection.getSize() == 0){
-            return new Response(ResponseType.ERROR, "В коллекции нет элементов");
+            return new Response(ResponseType.ERROR, "В коллекции нет элементов", user);
         }
         for (StudyGroup st: studyGroupCollection.getStudyGroupHashTable().values()){
             sum += st.getStudentsCount();
         }
-        return new Response(ResponseType.RESULT, "Сумма полей studentsCount всех элементов = " + sum);
+        return new Response(ResponseType.RESULT, "Сумма полей studentsCount всех элементов = " + sum, user);
     }
 }

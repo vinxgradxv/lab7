@@ -13,45 +13,47 @@ import java.util.function.Predicate;
 public class AskStudyGroup {
 
     IOManager ioManager;
+    Asker asker;
 
     public AskStudyGroup(IOManager ioManager){
         this.ioManager = ioManager;
+        asker = new Asker(ioManager);
     }
 
     public StudyGroup getStudyGroupFromUser() throws NumberOutOfBoundsException, NullValueException, IOException {
-        String name = asker(arg -> arg,
+        String name = asker.ask(arg -> arg,
                 arg -> (arg.length() > 0),
                 "Введите имя группы (String)",
                 "Имя не может быть пустым",
                 false);
 
-        Long coordinateX = asker(Long::valueOf,
+        Long coordinateX = asker.ask(Long::valueOf,
                 arg -> (arg <= 722),
                 "Введите координату X (Long)",
                 "Значение должно быть < 723",
                 false);
-        Long coordinateY = asker(Long::valueOf,
+        Long coordinateY = asker.ask(Long::valueOf,
                 arg -> (arg <= 102),
                 "Введите координату Y (Long)",
                 "Значение должно быть < 103",
                 false);
         Coordinates coordinates = new Coordinates(coordinateX, coordinateY);
-        Long studentsCount = asker(Long::valueOf,
+        Long studentsCount = asker.ask(Long::valueOf,
                 arg -> (arg > 0),
                 "Введите количество студентов (Long)",
                 "Значение должно быть > 0",
                 false);
-        Integer expelledStudents = asker(Integer::valueOf,
+        Integer expelledStudents = asker.ask(Integer::valueOf,
                 arg -> (arg > 0),
                 "Введите количество отчисленных студентов (Integer)",
                 "Значение должно быть > 0",
                 true);
-        int shouldBeExpelled = asker(Integer::valueOf,
+        int shouldBeExpelled = asker.ask(Integer::valueOf,
                 arg -> (arg > 0),
                 "Введите количество студентов, представленных к отчислению (int)",
                 "Значение должно быть > 0",
                 false);
-        Semester semester = asker(Semester::valueOf,
+        Semester semester = asker.ask(Semester::valueOf,
                 arg -> true,
                 "Введите семестр\nДоступные варианты:\n" + Semester.stringOfValues(),
                 "",
@@ -62,22 +64,22 @@ public class AskStudyGroup {
     }
 
     private Person getGroupAdmin() throws IOException, NullValueException, NumberOutOfBoundsException {
-        String name = asker(arg -> arg,
+        String name = asker.ask(arg -> arg,
                 arg -> (arg.length() > 0),
                 "Введите имя админа (String)",
                 "Имя не может быть пустым",
                 false);
-        Long height = asker(Long::valueOf,
+        Long height = asker.ask(Long::valueOf,
                 arg -> (arg > 0),
                 "Введите рост админа (Long)",
                 "Значение должно быть > 0",
                 true);
-        Color hairColor = asker(Color::valueOf,
+        Color hairColor = asker.ask(Color::valueOf,
                 arg -> true,
                 "Введите цвет волос админа\nДоступные варианты:\n" + Color.stringOfValues(),
                 "",
                 false);
-        Country nationality = asker(Country::valueOf,
+        Country nationality = asker.ask(Country::valueOf,
                 arg -> true,
                 "Введите национальность админа\nДоступные варианты\n" + Country.stringOfValues(),
                 "",
@@ -87,56 +89,23 @@ public class AskStudyGroup {
     }
 
     private Location getLocation() throws NullValueException, IOException {
-        Double locationX = asker(Double::valueOf,
+        Double locationX = asker.ask(Double::valueOf,
                 arg -> true,
                 "Введите локацию админа X (Double)",
                 "",
                 false);
-        Double locationY = asker(Double::valueOf,
+        Double locationY = asker.ask(Double::valueOf,
                 arg -> true,
                 "Введите локацию админа Y (Double)",
                 "",
                 false);
 
-        double locationZ = asker(Double::valueOf,
+        double locationZ = asker.ask(Double::valueOf,
                 arg -> true,
                 "Введите локацию админа Z (double)",
                 "",
                 false);
 
         return new Location(locationX, locationY, locationZ);
-    }
-
-
-    public <T> T asker(Function<String, T> function,
-                       Predicate<T> predicate,
-                       String message,
-                       String negativeResponse,
-                       boolean nullable) throws IOException {
-
-        T value = null;
-        while (true){
-            ioManager.println(message);
-            ioManager.prompt();
-            try {
-                String input = ioManager.readLine();
-                if (input.equals("") && nullable) {
-                    return null;
-                }
-                value = function.apply(input);
-                if (predicate.test(value)){
-                    return value;
-                }
-                else {
-                    ioManager.printerr(negativeResponse);
-                }
-            }catch (IllegalArgumentException e){
-                ioManager.printerr("Значение неверного формата");
-            }
-            catch (NullPointerException e){
-                ioManager.printerr("Значение не может быть null");
-            }
-        }
-
     }
 }

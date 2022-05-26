@@ -1,3 +1,5 @@
+package server;
+
 import commands.CommandResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +20,7 @@ public class SendManager {
     private final int limitSend = 100;
     DatagramSocket socket;
     private byte[] buf;
-    org.apache.logging.log4j.Logger logger = LogManager.getLogger("SendManager");
+    org.apache.logging.log4j.Logger logger = LogManager.getLogger("server.SendManager");
 
 
     public SendManager(DatagramSocket socket, InetAddress clientAddress, int port) {
