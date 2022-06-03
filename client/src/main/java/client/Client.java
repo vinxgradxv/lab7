@@ -1,6 +1,8 @@
 package client;
 
 import commands.CommandManger;
+import commands.LogInCommand;
+import commands.SignUpCommand;
 import data.User;
 import exceptions.NullValueException;
 import exceptions.NumberOutOfBoundsException;
@@ -10,7 +12,7 @@ import java.io.*;
 import java.net.*;
 
 public class Client {
-    private final static int PORT = 4598;
+    private final static int PORT = 5432;
     private static IOManager ioManager;
     private static DatagramSocket socket;
     private static InetAddress address;
@@ -22,19 +24,53 @@ public class Client {
 
     private static byte[] buf;
 
-    public static void main(String[] args) throws IOException, NumberOutOfBoundsException, NullValueException, ClassNotFoundException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter writer = new PrintWriter(System.out, true);
-        ioManager = new IOManager(reader, writer, "$");
-        socket = new DatagramSocket();
-        socket.setSoTimeout(15*1000);
-        address = InetAddress.getByName("localhost");
-        sendManager = new SendManager(address, socket, PORT);
-        requestMaker = new RequestMaker();
-        receiveManager = new ReceiveManager(socket);
-        CommandManger.setCommands();
-        run();
+    public Client() {
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            PrintWriter writer = new PrintWriter(System.out, true);
+            ioManager = new IOManager(reader, writer, "$");
+            socket = new DatagramSocket();
+            socket.setSoTimeout(15 * 1000);
+            address = InetAddress.getByName("localhost");
+            sendManager = new SendManager(address, socket, PORT);
+            requestMaker = new RequestMaker();
+            receiveManager = new ReceiveManager(socket);
+            CommandManger.setCommands();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
+    public Response logInUser(String login, String password){
+        try {
+            Message message = new Message(new LogInCommand(), null, null, new User(login, password));
+            sendManager.sendMessage(message);
+            Response response = receiveManager.receiveMessage();
+            return response;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Response signUpUser(String login, String password){
+        try {
+            Message message = new Message(new SignUpCommand(), null, null, new User(login, password));
+            sendManager.sendMessage(message);
+            Response response = receiveManager.receiveMessage();
+            return response;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
     public static void run() throws IOException, NumberOutOfBoundsException, NullValueException, ClassNotFoundException {
         boolean running = true;

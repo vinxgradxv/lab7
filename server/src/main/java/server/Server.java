@@ -22,7 +22,7 @@ import utils.ResponseType;
 
 
 public class Server {
-    private final static int PORT = 4598;
+    private final static int PORT = 5432;
     private static DatagramSocket socket;
     private static byte[] buf = new byte[2048];
     private static boolean running;
@@ -48,7 +48,7 @@ public class Server {
             String login = scanner.nextLine();
             System.out.println("Введите пароль для подключения к БД");
             String password = scanner.nextLine();
-            dbConnection = DriverManager.getConnection("jdbc:postgresql://pg:5432/studs", login, password);
+            dbConnection = DriverManager.getConnection("jdbc:postgresql://localhost:1099/studs", login, password);
             studyGroupCollection = new StudyGroupCollection(dbConnection);
             logger.info("Инициализировали коллекцию по значениям из базы данных");
             logger.info("Сервер начинает работу");
