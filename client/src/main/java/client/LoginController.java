@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import utils.Response;
 import utils.ResponseType;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Node;
+
 
 public class LoginController implements Initializable {
     Stage stage;
@@ -28,11 +29,9 @@ public class LoginController implements Initializable {
     @FXML
     protected PasswordField passwordField;
     @FXML
-    protected ChoiceBox<String> languageChoice;
-    @FXML
     protected Label errorLabel;
 
-    private ResourceBundle rb = ResourceBundle.getBundle("localization.Resource", Locale.US);
+    protected static ResourceBundle rb;
 
     private Scene scene;
     private Parent root;
@@ -90,30 +89,7 @@ public class LoginController implements Initializable {
         }
     }
 
-    @FXML
-    protected void languageDrag(ActionEvent event){
-        System.out.println("asfasdf");
-        for (int i = 0; i < languages.length; i++){
-            if (languageChoice.getValue().equals(languages[i])){
-                try {
-                    rb = ResourceBundle.getBundle("localization.Resource", locales[i]);
-                    curLogin = loginField.getText();
-                    curPassword = passwordField.getText();
-                    curLang = languages[i];
-                    root = FXMLLoader.load(getClass().getResource("login1.fxml"), rb);
-                    stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    LoginApp.locale = locales[i];
-                    new LoginApp().start(stage);
-                    System.out.println(i);
-                    break;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+
 
     private boolean isEmpty(){
         boolean res = false;
@@ -133,17 +109,14 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        languageChoice.getItems().addAll(languages);
         loginField.setText(curLogin);
         passwordField.setText(curPassword);
-        languageChoice.setValue(curLang);
-        languageChoice.setValue(languages[0]);
-        languageChoice.setOnAction(this::languageDrag);
     }
 
     private void switchToTable(ActionEvent event){
         try {
-            root = FXMLLoader.load(getClass().getResource("table1.fxml"));
+            TableController.rb = rb;
+            root = FXMLLoader.load(getClass().getResource("table1.fxml"), rb);
             stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);

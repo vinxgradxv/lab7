@@ -17,25 +17,25 @@
                <children>
                   <TableView fx:id="table" layoutX="83.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="33.333343505859375" text="id" />
-                      <TableColumn prefWidth="97.99999618530273" text="name" />
-                        <TableColumn prefWidth="41.333343505859375" text="coordinates">
+                      <TableColumn prefWidth="33.333343505859375" text="%id" />
+                      <TableColumn prefWidth="97.99999618530273" text="%name" />
+                        <TableColumn prefWidth="41.333343505859375" text="%coordinates">
                            <columns>
                               <TableColumn prefWidth="32.0" text="x" />
                               <TableColumn prefWidth="43.333343505859375" text="y" />
                            </columns>
                         </TableColumn>
-                        <TableColumn prefWidth="74.66670227050781" text="students count" />
-                        <TableColumn minWidth="0.0" prefWidth="56.66668701171875" text="expelled st." />
-                        <TableColumn prefWidth="84.66668701171875" text="should be expelled" />
-                        <TableColumn prefWidth="75.0" text="semester" />
-                        <TableColumn prefWidth="75.0" text="admin">
+                        <TableColumn prefWidth="74.66670227050781" text="%students count" />
+                        <TableColumn minWidth="0.0" prefWidth="56.66668701171875" text="%expelled students" />
+                        <TableColumn prefWidth="84.66668701171875" text="%should be expelled" />
+                        <TableColumn prefWidth="75.0" text="%semester" />
+                        <TableColumn prefWidth="430.6665954589844" text="%admin">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="name" />
-                              <TableColumn prefWidth="75.0" text="height" />
-                              <TableColumn prefWidth="75.0" text="hair color" />
-                              <TableColumn prefWidth="75.0" text="nationality" />
-                              <TableColumn prefWidth="75.0" text="Location">
+                              <TableColumn prefWidth="75.0" text="%name" />
+                              <TableColumn prefWidth="75.0" text="%height" />
+                              <TableColumn prefWidth="75.0" text="%hair color" />
+                              <TableColumn prefWidth="75.0" text="%nationality" />
+                              <TableColumn prefWidth="75.0" text="%location">
                                  <columns>
                                     <TableColumn prefWidth="45.33331298828125" text="x" />
                                     <TableColumn prefWidth="45.33331298828125" text="y" />
@@ -44,77 +44,82 @@
                               </TableColumn>
                            </columns>
                         </TableColumn>
-                        <TableColumn prefWidth="147.3333740234375" text="user" />
+                        <TableColumn prefWidth="147.3333740234375" text="%user" />
                     </columns>
                   </TableView>
-                  <VBox alignment="TOP_CENTER" layoutX="1166.0" layoutY="109.0" prefHeight="1021.0" prefWidth="201.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox alignment="TOP_CENTER" layoutX="1166.0" layoutY="109.0" prefHeight="1021.0" prefWidth="201.0" spacing="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="help" textAlignment="CENTER">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="info">
+                        <Button fx:id="helpButton" mnemonicParsing="false" onAction="#onHelpButtonClick" prefHeight="25.0" prefWidth="150.0" text="%help" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="show" textAlignment="CENTER">
+                        <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%info">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="insert" textAlignment="CENTER">
+                        <Button fx:id="showButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%show" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="clear" textAlignment="CENTER">
+                        <Button fx:id="insertButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%insert" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="execute script" textAlignment="CENTER">
+                        <Button fx:id="clearButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%clear" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="count greater semester" textAlignment="CENTER">
+                        <Button fx:id="executeScruptButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%execute script" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="filter less students count" textAlignment="CENTER">
+                        <Button fx:id="countGreaterSemesterButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%count greater semester" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="remove greater key" textAlignment="CENTER">
+                        <Button fx:id="filterLessStCountButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%filter less students count" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="log out" textAlignment="CENTER">
+                        <Button fx:id="removeGreaterKeyButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%remove greater key" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="remove key" textAlignment="CENTER">
+                        <Button fx:id="logOutButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%log out" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="remove lower" textAlignment="CENTER">
+                        <Button fx:id="removeKeyButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%remove key" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="replace if greater" textAlignment="CENTER">
+                        <Button fx:id="removeLowerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%remove lower" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="update" textAlignment="CENTER">
+                        <Button fx:id="replaceIfGreaterButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%replace if greater" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="updateButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%update" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="sumButton" mnemonicParsing="false" onAction="#onSumButtonAction" prefHeight="25.0" prefWidth="150.0" text="%sum of students count" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
