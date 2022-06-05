@@ -31,7 +31,7 @@ public class SignUpCommand extends Command{
     public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException {
         User aUser = studyGroupCollection.createNewUser(user);
         if(aUser != null)
-        return new Response(ResponseType.USER, "Новый пользователь " + aUser.getLogin() + " создан и произведена аутентификация", aUser);
-        else return new Response(ResponseType.USER, "Пользователь с таким логином уже существует", aUser);
+        return new Response(ResponseType.USER, "Новый пользователь " + aUser.getLogin() + " создан и произведена аутентификация", aUser, null);
+        else return new Response(ResponseType.USER, "Пользователь с таким логином уже существует", aUser, null);
     }
 }

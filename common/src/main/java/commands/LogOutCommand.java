@@ -26,6 +26,6 @@ public class LogOutCommand extends Command{
 
     @Override
     public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException {
-        return new Response(ResponseType.USER, "Выход из аккаунта произведен успешно", null);
+        return new Response(ResponseType.USER, "Выход из аккаунта произведен успешно", null, null);
     }
 }

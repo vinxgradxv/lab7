@@ -49,6 +49,6 @@ public class CountGreaterSemesterCommand extends Command{
                 count += 1;
             }
         }
-        return new Response(ResponseType.RESULT, "В коллекции " + count + " элементов с Semester больше заданного", user);
+        return new Response(ResponseType.RESULT, String.valueOf(count), user, null);
     }
 }

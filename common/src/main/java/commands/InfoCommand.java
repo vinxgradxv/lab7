@@ -44,6 +44,6 @@ public class InfoCommand extends Command{
         return new Response(ResponseType.RESULT,
                 "Дата инициализации: " + studyGroupCollection.getInitializationDate() + "\n"
         + "Размер коллекции " + studyGroupCollection.getSize() + "\n"
-        + "Тип коллекции " + studyGroupCollection.getType(), user);
+        + "Тип коллекции " + studyGroupCollection.getType(), user, null);
     }
 }

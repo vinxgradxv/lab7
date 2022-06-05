@@ -47,7 +47,7 @@ public class FilterLessStCountCommand extends Command{
             }
         }
 
-        return new Response(ResponseType.RESULT, result, user);
+        return new Response(ResponseType.RESULT, result, user, null);
 
     }
 }

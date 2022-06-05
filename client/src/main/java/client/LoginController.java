@@ -36,7 +36,7 @@ public class LoginController implements Initializable {
     private Scene scene;
     private Parent root;
     
-    private Client client = new Client();
+    public static Client client = new Client();
 
     private final String[] languages = {"English", "Russian", "Serbian", "Italian", "Spanish (Nicaragua)"};
     private final String[] langCodes = {"_en_US", "_ru_RU", "_sr_SR", "_it_IT", "_es_NI"};

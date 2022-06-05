@@ -41,9 +41,9 @@ public class ExitCommand extends Command{
     public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) {
         try {
             studyGroupCollection.setFileFromCollection();
-            return new Response(ResponseType.EXIT, "Коллекция сохранена в файл", user);
+            return new Response(ResponseType.EXIT, "Коллекция сохранена в файл", user, null);
         }catch (FileNotFoundException e){
-            return new Response(ResponseType.EXIT, "Файл в который должна была записаться коллекция недоступен", user);
+            return new Response(ResponseType.EXIT, "Файл в который должна была записаться коллекция недоступен", user, null);
         }
     }
 }

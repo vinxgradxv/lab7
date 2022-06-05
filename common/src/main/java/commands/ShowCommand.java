@@ -36,15 +36,18 @@ public class ShowCommand extends Command{
 
 
     public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
+        StudyGroup[] studyGroups = new StudyGroup[studyGroupCollection.getStudyGroupHashTable().size()];
         if (studyGroupCollection.getStudyGroupHashTable().isEmpty()){
-            return new Response(ResponseType.ERROR, "В коллекции нет элементов", user);
+            return new Response(ResponseType.ERROR, "В коллекции нет элементов", user, null);
         }
         String result = "";
-
+        int i = 0;
         for (Long key: studyGroupCollection.getStudyGroupHashTable().keySet()){
+            studyGroups[i] = studyGroupCollection.getStudyGroupHashTable().get(key);
+            i += 1;
             result += "Ключ = " + key + '\n' + studyGroupCollection.getStudyGroupHashTable().get(key).toString()
                     + "\n" +  separatorString;
         }
-        return new Response(ResponseType.RESULT, result, user);
+        return new Response(ResponseType.RESULT, result, user, studyGroups);
     }
 }

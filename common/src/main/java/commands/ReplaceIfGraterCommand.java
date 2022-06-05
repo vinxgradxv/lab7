@@ -45,7 +45,7 @@ public class ReplaceIfGraterCommand extends Command{
         Long longParam = (Long) param;
         if (studyGroupCollection.getStudyGroupHashTable().get(longParam).getUser().getLogin().equals(user.getLogin())) {
             if (!studyGroupCollection.getStudyGroupHashTable().containsKey(longParam)) {
-                return new Response(ResponseType.ERROR, "В коллекции нет элемента с таким ключом", user);
+                return new Response(ResponseType.ERROR, "В коллекции нет элемента с таким ключом", user, null);
             }
 
             if (studyGroupCollection.getStudyGroupHashTable().get(longParam).compareTo(studyGroup) < 0) {
@@ -55,10 +55,10 @@ public class ReplaceIfGraterCommand extends Command{
                     System.err.println("id не может быть null");
                 }
                 studyGroupCollection.add(longParam, studyGroup);
-                return new Response(ResponseType.RESULT, "Элемент был обновлен", user);
+                return new Response(ResponseType.RESULT, "Элемент был обновлен", user, null);
             }
-            return new Response(ResponseType.RESULT, "Элемент не был обновлен", user);
+            return new Response(ResponseType.RESULT, "Элемент не был обновлен", user, null);
         }
-        return new Response(ResponseType.ERROR, "У вас нет прав на изменение этого элемента", user);
+        return new Response(ResponseType.ERROR, "У вас нет прав на изменение этого элемента", user, null);
     }
 }

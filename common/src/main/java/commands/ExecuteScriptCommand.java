@@ -43,6 +43,6 @@ public class ExecuteScriptCommand extends Command{
 
 
     public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
-        return new Response(ResponseType.SCRIPT, (String) param, user);
+        return new Response(ResponseType.SCRIPT, (String) param, user, null);
     }
 }

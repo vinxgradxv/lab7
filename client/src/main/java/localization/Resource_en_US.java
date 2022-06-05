@@ -74,7 +74,13 @@ public class Resource_en_US extends ListResourceBundle {
             {"to remove element by key", "to remove element by key"},
             {"to remove all elements that are lower than given", "to remove all elements that are lower than given"},
             {"to replace the element if the new one is greater", "to replace the element if the new one is greater"},
-            {"to update the element", "to update the element"}
+            {"to update the element", "to update the element"},
+
+            {"answer:", "answer:"},
+            {"wrong parameter", "wrong parameter"},
+            {"parameter", "parameter"},
+            {"input semester", "input semester"},
+            {"send", "send"}
     };
 
     @Override

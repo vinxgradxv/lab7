@@ -1,8 +1,7 @@
 package client;
 
-import commands.CommandManger;
-import commands.LogInCommand;
-import commands.SignUpCommand;
+import commands.*;
+import data.Semester;
 import data.User;
 import exceptions.NullValueException;
 import exceptions.NumberOutOfBoundsException;
@@ -44,9 +43,11 @@ public class Client {
 
     public Response logInUser(String login, String password){
         try {
-            Message message = new Message(new LogInCommand(), null, null, new User(login, password));
+            User user = new User(login, password);
+            Message message = new Message(new LogInCommand(), null, null, user);
             sendManager.sendMessage(message);
             Response response = receiveManager.receiveMessage();
+            currentUser = user;
             return response;
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,10 +59,51 @@ public class Client {
 
     public Response signUpUser(String login, String password){
         try {
-            Message message = new Message(new SignUpCommand(), null, null, new User(login, password));
+            User user = new User(login, password);
+            Message message = new Message(new SignUpCommand(), null, null, user);
+            sendManager.sendMessage(message);
+            Response response = receiveManager.receiveMessage();
+            currentUser = user;
+            return response;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Response getElements(){
+        try {
+            Message message = new Message(new ShowCommand(), null, null, currentUser);
             sendManager.sendMessage(message);
             Response response = receiveManager.receiveMessage();
             return response;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Response getInfo(){
+        try {
+            Message message = new Message(new InfoCommand(), null, null, currentUser);
+            sendManager.sendMessage(message);
+            return receiveManager.receiveMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public Response getSemesterGreaterCount(Semester semester){
+        try {
+            Message message = new Message(new CountGreaterSemesterCommand(), semester, null, currentUser);
+            sendManager.sendMessage(message);
+            return receiveManager.receiveMessage();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

@@ -52,6 +52,6 @@ public class RemoveGreaterKeyCommand extends Command{
                 result += "Элемент с id = " + studyGroupCollection.getStudyGroupHashTable().get(longParam).getId() + " не удален из-за отсутствия прав владельца\n";
             }
         }
-        return new Response(ResponseType.RESULT, result + "Из коллекции было удалено " + count + " элементов", user);
+        return new Response(ResponseType.RESULT, result + "Из коллекции было удалено " + count + " элементов", user, null);
     }
 }

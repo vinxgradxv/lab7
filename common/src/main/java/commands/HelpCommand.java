@@ -42,6 +42,6 @@ public class HelpCommand extends Command{
         for(Command command:CommandManger.getCommands()){
             result += command.getName() + " " + command.getParameters()  + " - " + command.getInfo()+"\n";
         }
-        return new Response(ResponseType.RESULT, result, user);
+        return new Response(ResponseType.RESULT, result, user, null);
     }
 }

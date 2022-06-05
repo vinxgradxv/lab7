@@ -30,12 +30,12 @@ public class LogInCommand extends Command{
     @Override
     public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user) throws NumberOutOfBoundsException, WrongAmountOfCoordinatesException {
         if (user == null){
-            return new Response(ResponseType.ERROR, "Вы уже авторизованы в системе", user);
+            return new Response(ResponseType.ERROR, "Вы уже авторизованы в системе", user, null);
         }
         User aUser = studyGroupCollection.getUser(user);
         if (aUser == null){
-            return new Response(ResponseType.ERROR, "Неверное имя пользователя или пароль", user);
+            return new Response(ResponseType.ERROR, "Неверное имя пользователя или пароль", user, null);
         }
-        return new Response(ResponseType.USER, "Авторизация прошла успешно", user);
+        return new Response(ResponseType.USER, "Авторизация прошла успешно", user, null);
     }
 }

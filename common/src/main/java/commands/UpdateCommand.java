@@ -57,15 +57,15 @@ public class UpdateCommand extends Command{
         if (st != null) {
             if (st.getUser().getLogin().equals(user.getLogin())) {
                 if(studyGroupCollection.updateStudyGroup(kk, studyGroup, st)){
-                    return new Response(ResponseType.RESULT, "Элемент успешно изменен", user);
+                    return new Response(ResponseType.RESULT, "Элемент успешно изменен", user, null);
                 }
-                else return new Response(ResponseType.ERROR, "Элемент не был изменен", user);
+                else return new Response(ResponseType.ERROR, "Элемент не был изменен", user, null);
             } else {
-                return new Response(ResponseType.ERROR, "У вас нет прав на изменение данного элемента", user);
+                return new Response(ResponseType.ERROR, "У вас нет прав на изменение данного элемента", user, null);
             }
         }
         else{
-            return new Response(ResponseType.ERROR, "Элемента с таким ключом нет", user);
+            return new Response(ResponseType.ERROR, "Элемента с таким ключом нет", user, null);
         }
     }
 }

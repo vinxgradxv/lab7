@@ -75,6 +75,15 @@ public class Resource_sr_SR extends ListResourceBundle {
             {"to replace the element if the new one is greater", "Да бисте заменили елемент ако је нови већи"},
             {"to update the element", "Да бисте ажурирали елемент"},
 
+            {"answer:", "одговор:"},
+            {"wrong parameter", "погрешан параметар"},
+            {"parameter", "параметар"},
+            {"input semester", "унесите семестар"},
+            {"send", "пошаљи"}
+
+
+
+
     };
 
     @Override

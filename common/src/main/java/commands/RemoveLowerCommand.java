@@ -46,6 +46,6 @@ public class RemoveLowerCommand extends Command{
                 count += 1;
             }
         }
-        return new Response(ResponseType.RESULT, "Из коллекции было удалено " + count + " элементов", user);
+        return new Response(ResponseType.RESULT, "Из коллекции было удалено " + count + " элементов", user, null);
     }
 }

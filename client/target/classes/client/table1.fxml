@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<TabPane prefHeight="700.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.TableController">
+<TabPane fx:id="tabPane" prefHeight="700.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.TableController">
   <tabs>
     <Tab text="id">
          <content>
@@ -17,34 +17,35 @@
                <children>
                   <TableView fx:id="table" layoutX="83.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="33.333343505859375" text="%id" />
-                      <TableColumn prefWidth="97.99999618530273" text="%name" />
-                        <TableColumn prefWidth="41.333343505859375" text="%coordinates">
+                        <TableColumn fx:id="creationDate" prefWidth="75.0" text="%creation date" />
+                      <TableColumn fx:id="id" prefWidth="33.333343505859375" text="%id" />
+                      <TableColumn fx:id="name" prefWidth="97.99999618530273" text="%name" />
+                        <TableColumn fx:id="coordinates" prefWidth="41.333343505859375" text="%coordinates">
                            <columns>
-                              <TableColumn prefWidth="32.0" text="x" />
-                              <TableColumn prefWidth="43.333343505859375" text="y" />
+                              <TableColumn fx:id="coordinatesX" prefWidth="32.0" text="x" />
+                              <TableColumn fx:id="coordinatesY" prefWidth="43.333343505859375" text="y" />
                            </columns>
                         </TableColumn>
-                        <TableColumn prefWidth="74.66670227050781" text="%students count" />
-                        <TableColumn minWidth="0.0" prefWidth="56.66668701171875" text="%expelled students" />
-                        <TableColumn prefWidth="84.66668701171875" text="%should be expelled" />
-                        <TableColumn prefWidth="75.0" text="%semester" />
-                        <TableColumn prefWidth="430.6665954589844" text="%admin">
+                        <TableColumn fx:id="studentsCount" prefWidth="74.66670227050781" text="%students count" />
+                        <TableColumn fx:id="expelledStudents" minWidth="0.0" prefWidth="56.66668701171875" text="%expelled students" />
+                        <TableColumn fx:id="shouldBeExpelled" prefWidth="84.66668701171875" text="%should be expelled" />
+                        <TableColumn fx:id="semester" prefWidth="75.0" text="%semester" />
+                        <TableColumn fx:id="admin" prefWidth="430.6665954589844" text="%admin">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="%name" />
-                              <TableColumn prefWidth="75.0" text="%height" />
-                              <TableColumn prefWidth="75.0" text="%hair color" />
-                              <TableColumn prefWidth="75.0" text="%nationality" />
-                              <TableColumn prefWidth="75.0" text="%location">
+                              <TableColumn fx:id="adminName" prefWidth="75.0" text="%name" />
+                              <TableColumn fx:id="height" prefWidth="75.0" text="%height" />
+                              <TableColumn fx:id="hairColor" prefWidth="75.0" text="%hair color" />
+                              <TableColumn fx:id="nationality" prefWidth="75.0" text="%nationality" />
+                              <TableColumn fx:id="location" prefWidth="75.0" text="%location">
                                  <columns>
-                                    <TableColumn prefWidth="45.33331298828125" text="x" />
-                                    <TableColumn prefWidth="45.33331298828125" text="y" />
-                                    <TableColumn prefWidth="37.99981689453125" text="z" />
+                                    <TableColumn fx:id="locationX" prefWidth="45.33331298828125" text="x" />
+                                    <TableColumn fx:id="locationY" prefWidth="45.33331298828125" text="y" />
+                                    <TableColumn fx:id="locationZ" prefWidth="37.99981689453125" text="z" />
                                  </columns>
                               </TableColumn>
                            </columns>
                         </TableColumn>
-                        <TableColumn prefWidth="147.3333740234375" text="%user" />
+                        <TableColumn fx:id="user" prefWidth="147.3333740234375" text="%user" />
                     </columns>
                   </TableView>
                   <VBox alignment="TOP_CENTER" layoutX="1166.0" layoutY="109.0" prefHeight="1021.0" prefWidth="201.0" spacing="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -54,12 +55,12 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%info">
+                        <Button fx:id="infoButton" mnemonicParsing="false" onAction="#onInfoButtonAction" prefHeight="25.0" prefWidth="150.0" text="%info">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="showButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%show" textAlignment="CENTER">
+                        <Button fx:id="showButton" mnemonicParsing="false" onAction="#onShowButtonAction" prefHeight="25.0" prefWidth="150.0" text="%show" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
@@ -79,7 +80,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="countGreaterSemesterButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%count greater semester" textAlignment="CENTER">
+                        <Button fx:id="countGreaterSemesterButton" mnemonicParsing="false" onAction="#onCountGreaterSemesterButtonAction" prefHeight="25.0" prefWidth="150.0" text="%count greater semester" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
@@ -128,6 +129,6 @@
                </children>
             </AnchorPane>
          </content></Tab>
-    <Tab text="map" />
+    <Tab fx:id="mapTab" text="map" />
   </tabs>
 </TabPane>

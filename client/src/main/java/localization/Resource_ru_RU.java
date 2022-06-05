@@ -74,6 +74,14 @@ public class Resource_ru_RU extends ListResourceBundle {
             {"to remove all elements that are lower than given", "удалить все элементы, меньшие заданного"},
             {"to replace the element if the new one is greater", "заменить элемент, если новый больше"},
             {"to update the element", "обновить элемент"},
+
+            {"answer:", "ответ:"},
+            {"wrong parameter", "неверный параметр"},
+            {"parameter", "параметр"},
+            {"input semester", "введите семестр"},
+            {"send", "отправить"}
+
+
     };
 
     @Override

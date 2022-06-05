@@ -73,6 +73,15 @@ public class Resource_es_NI extends ListResourceBundle {
             {"to remove all elements that are lower than given", "para eliminar todos los elementos que son más bajos que los dados"},
             {"to replace the element if the new one is greater", "Para reemplazar el elemento si el nuevo es mayor"},
             {"to update the element", "Para actualizar el elemento"},
+
+            {"answer:", "responder:"},
+            {"wrong parameter", "parámetro incorrecto"},
+            {"parameter", "parámetro"},
+            {"input semester", "introduzca el semestre"},
+            {"send", "enviar"}
+
+
+
     };
 
     @Override

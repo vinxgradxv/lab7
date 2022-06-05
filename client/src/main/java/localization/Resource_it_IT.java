@@ -88,6 +88,14 @@ public class Resource_it_IT extends ListResourceBundle {
             {"to replace the element if the new one is greater", "per sostituire l'elemento se quello nuovo è maggiore"},
             {"to update the element", "Per aggiornare l'elemento"},
 
+            {"answer:", "rispondere:"},
+            {"wrong parameter", "parametro errato"},
+            {"parameter", "parametro"},
+            {"input semester", "inserisci il semestre"},
+            {"send", "inviare"}
+
+
+
     };
 
     @Override
