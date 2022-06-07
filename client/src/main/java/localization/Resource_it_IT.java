@@ -99,7 +99,8 @@ public class Resource_it_IT extends ListResourceBundle {
             {"element with this key already exists", "Elemento con questa chiave già esiste"},
             {"element added to the collection", "Elemento aggiunto alla raccolta"},
             {"element was not added to the collection", "L'elemento non è stato aggiunto alla collezione"},
-            {"key", "chiave"}
+            {"key", "chiave"},
+            {"input students count", "Gli studenti di input contano"}
 
 
 

@@ -88,7 +88,7 @@ public class TableController implements Initializable {
 
     private StudyGroup[] studyGroups;
 
-    private boolean isInRequest = false;
+    public static boolean isInRequest = false;
 
 
     private Thread thread = new Thread(this::updateTable);
@@ -242,4 +242,20 @@ public class TableController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void onFilterStudentsCountAction(){
+        try {
+            StCountAskerController.rb = rb;
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("parameterAskerStCount.fxml"), rb);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

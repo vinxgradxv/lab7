@@ -86,7 +86,9 @@ public class Resource_ru_RU extends ListResourceBundle {
             {"element with this key already exists", "элемент с таким ключом уже существует"},
             {"element added to the collection", "элемент добавлен в коллекцию"},
             {"element was not added to the collection", "элемент не был добавлен"},
-            {"key", "ключ"}
+            {"key", "ключ"},
+            {"input students count", "введите количество студентов"}
+
 
 
     };

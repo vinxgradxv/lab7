@@ -44,10 +44,18 @@ public class FilterLessStCountCommand extends Command{
         for(StudyGroup st: studyGroupCollection.getStudyGroupHashTable().values()){
             if (st.getStudentsCount() < longParam){
                 result += st.toString();
+                count += 1;
+            }
+        }
+        count = 0;
+        StudyGroup[] studyGroups = new StudyGroup[count];
+        for(StudyGroup st: studyGroupCollection.getStudyGroupHashTable().values()){
+            if (st.getStudentsCount() < longParam){
+                studyGroups[count] = st;
             }
         }
 
-        return new Response(ResponseType.RESULT, result, user, null);
+        return new Response(ResponseType.RESULT, result, user, studyGroups);
 
     }
 }

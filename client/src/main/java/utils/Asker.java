@@ -27,6 +27,7 @@ public class Asker {
                 if (predicate.test(value)){
                     return value;
                 }
+                response = "asdasd";
             }catch (IllegalArgumentException e){
                 response = "Значение неверного формата";
             }

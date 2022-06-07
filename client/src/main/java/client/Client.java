@@ -139,6 +139,19 @@ public class Client {
         return null;
     }
 
+    public Response filterStudentsCount(Long studentsCount){
+        try {
+            Message message = new Message(new FilterLessStCountCommand(), studentsCount, null, currentUser);
+            sendManager.sendMessage(message);
+            return receiveManager.receiveMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
 

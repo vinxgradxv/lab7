@@ -97,6 +97,13 @@ public class GroupAskerController implements Initializable {
         try {
             boolean perfectInput = true;
             Asker asker = new Asker();
+            Long key = asker.ask(Long::valueOf, arg -> arg > 0, keyField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                keyError.setText(rb.getString("wrong parameter"));
+                keyError.setVisible(true);
+            }
+            else keyError.setVisible(false);
             String name = asker.ask(arg -> arg, arg -> arg.length() > 0, nameField.getText(), false);
             if (!asker.response.equals("")){
                 perfectInput = false;
@@ -132,7 +139,7 @@ public class GroupAskerController implements Initializable {
                 expelledStudentsError.setVisible(true);
             }
             else expelledStudentsError.setVisible(false);
-            int shouldBeExpelled = asker.ask(Integer::valueOf, arg -> arg > 0, shouldBeExpelledField.getText(), false);
+            Integer shouldBeExpelled = asker.ask(Integer::valueOf, arg -> arg > 0, shouldBeExpelledField.getText(), false);
             if (!asker.response.equals("")){
                 perfectInput = false;
                 shouldBeExpelledError.setText(rb.getString("wrong parameter"));
@@ -198,7 +205,14 @@ public class GroupAskerController implements Initializable {
             if (perfectInput) {
                 StudyGroup st = new StudyGroup(name, new Coordinates(coordinatesX, coordinatesY), studentsCount, expelledStudents,
                         shouldBeExpelled, semester, new Person(adminName, height, hairColor, nationality, new Location(locationX, locationY, locationZ)));
-                Response response = LoginController.client.insert(Long.valueOf(keyField.getText()), st);
+
+                Response response = null;
+                while (true) {
+                    if (!TableController.isInRequest) {
+                        response = LoginController.client.insert(key, st);
+                        break;
+                    }
+                }
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(rb.getString("insert"));
                 alert.setHeaderText(rb.getString("answer:"));

@@ -86,7 +86,8 @@ public class Resource_sr_SR extends ListResourceBundle {
             {"element with this key already exists", "Елемент са овим кључем већ постоји"},
             {"element added to the collection", "Елемент је додат у колекцију"},
             {"element was not added to the collection", "Елемент није додан у колекцију"},
-            {"кључ", "кључ"}
+            {"кључ", "кључ"},
+            {"input students count", "Улазни студенти се рачунају"}
 
 
 

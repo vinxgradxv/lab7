@@ -85,7 +85,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="filterLessStCountButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%filter less students count" textAlignment="CENTER">
+                        <Button fx:id="filterLessStCountButton" mnemonicParsing="false" onAction="#onFilterStudentsCountAction" prefHeight="25.0" prefWidth="150.0" text="%filter less students count" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>

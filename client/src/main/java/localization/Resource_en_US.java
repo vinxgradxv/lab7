@@ -87,7 +87,8 @@ public class Resource_en_US extends ListResourceBundle {
             {"element with this key already exists", "element with this key already exists"},
             {"element added to the collection", "element added to the collection"},
             {"element was not added to the collection", "element was not added to the collection"},
-            {"key", "key"}
+            {"key", "key"},
+            {"input students count", "input students count"}
     };
 
     @Override
