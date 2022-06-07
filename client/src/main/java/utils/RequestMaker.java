@@ -37,7 +37,7 @@ public class RequestMaker {
                 if (properCommand.getName().equals("log_in") && Client.getCurrentUser() != null){
                     user = null;
                 }
-                else user = new AskUser(ioManager).getUserFromInput();
+                //else user = new AskUser(ioManager).getUserFromInput();
             }
 
 

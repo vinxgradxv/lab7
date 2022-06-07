@@ -83,7 +83,11 @@ public class Resource_en_US extends ListResourceBundle {
             {"send", "send"},
             {"error", "error"},
             {"collection cleaned", "collection cleaned"},
-            {"no elements in collection", "no elements in collection"}
+            {"no elements in collection", "no elements in collection"},
+            {"element with this key already exists", "element with this key already exists"},
+            {"element added to the collection", "element added to the collection"},
+            {"element was not added to the collection", "element was not added to the collection"},
+            {"key", "key"}
     };
 
     @Override

@@ -82,7 +82,11 @@ public class Resource_ru_RU extends ListResourceBundle {
             {"send", "отправить"},
             {"error", "ошибка"},
             {"collection cleaned", "коллекция очищена"},
-            {"no elements in collection", "нет элементов"}
+            {"no elements in collection", "нет элементов"},
+            {"element with this key already exists", "элемент с таким ключом уже существует"},
+            {"element added to the collection", "элемент добавлен в коллекцию"},
+            {"element was not added to the collection", "элемент не был добавлен"},
+            {"key", "ключ"}
 
 
     };

@@ -45,13 +45,13 @@ public class InsertCommand extends Command{
             Long longParam = (Long) param;
             studyGroup.setUser(user);
             if (studyGroupCollection.getStudyGroupHashTable().containsKey(longParam)) {
-                return new Response(ResponseType.ERROR, "Объект с таким ключом уже есть в коллекции", user, null);
+                return new Response(ResponseType.ERROR, "element with this key already exists", user, null);
             }
             boolean res = studyGroupCollection.add(longParam, studyGroup);
             if (res) {
-                return new Response(ResponseType.RESULT, "Объект добавлен в коллекцию", user, null);
+                return new Response(ResponseType.RESULT, "element added to the collection", user, null);
             }
-            else return new Response(ResponseType.ERROR, "Элемент не добавлен в коллекцию", user, null);
+            else return new Response(ResponseType.ERROR, "element was not added to the collection", user, null);
     }
 
 }

@@ -1,15 +1,18 @@
 package client;
 
-import data.Color;
-import data.Semester;
-import data.StudyGroup;
+import data.*;
+import exceptions.NullValueException;
+import exceptions.NumberOutOfBoundsException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import sun.rmi.runtime.Log;
 import utils.Asker;
+import utils.Response;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,6 +48,39 @@ public class GroupAskerController implements Initializable {
     @FXML
     public TextField locationZField;
 
+    @FXML
+    public Label keyError;
+    @FXML
+    public Label nameError;
+    @FXML
+    public Label coordinatesXError;
+    @FXML
+    public Label coordinatesYError;
+    @FXML
+    public Label studentsCountError;
+    @FXML
+    public Label expelledStudentsError;
+    @FXML
+    public Label shouldBeExpelledError;
+    @FXML
+    public Label semesterError;
+    @FXML
+    public Label adminNameError;
+    @FXML
+    public Label heightError;
+    @FXML
+    public Label hairColorError;
+    @FXML
+    public Label nationalityError;
+    @FXML
+    public Label locationXError;
+    @FXML
+    public Label locationYError;
+    @FXML
+    public Label locationZError;
+
+
+
     public boolean updateMode = false;
 
     public static ResourceBundle rb;
@@ -58,17 +94,123 @@ public class GroupAskerController implements Initializable {
 
     @FXML
     public void onSendButtonAction(){
-        Asker asker = new Asker();
-        String name = asker.ask(arg -> arg, arg -> arg.length() > 0, nameField.getText(), false);
-        Long coordinatesX = asker.ask(Long::valueOf, arg -> arg <= 722, coordinatesXField.getText(), false);
-        Long coordinatesY = asker.ask(Long::valueOf, arg -> arg <= 102, coordinatesYField.getText(), false);
-        Long studentsCount = asker.ask(Long::valueOf, arg -> arg > 0, studentsCountField.getText(), false);
-        Integer expelledStudents = asker.ask(Integer::valueOf, arg -> arg > 0, expelledStudentsField.getText(), true);
-        int shouldBeExpelled = asker.ask(Integer::valueOf, arg -> arg > 0, shouldBeExpelledField.getText(), false);
-        Semester semester = asker.ask(Semester::valueOf, arg -> true, semesterField.getText(), true);
-        String adminName = asker.ask(arg -> arg, arg -> arg.length() > 0, adminNameField.getText(), false);
-        Long height = asker.ask(Long::valueOf, arg -> arg > 0, heightField.getText(), true);
-        Color hairColor = asker.ask(Color::valueOf, arg -> true, hairColorField.getText(), )
-        LoginController.client.insert()
+        try {
+            boolean perfectInput = true;
+            Asker asker = new Asker();
+            String name = asker.ask(arg -> arg, arg -> arg.length() > 0, nameField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                nameError.setText(rb.getString("wrong parameter"));
+                nameError.setVisible(true);
+            }
+            else nameError.setVisible(false);
+            Long coordinatesX = asker.ask(Long::valueOf, arg -> arg <= 722, coordinatesXField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                coordinatesXError.setText(rb.getString("wrong parameter"));
+                coordinatesXError.setVisible(true);
+            }
+            else coordinatesXError.setVisible(false);
+            Long coordinatesY = asker.ask(Long::valueOf, arg -> arg <= 102, coordinatesYField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                coordinatesYError.setText(rb.getString("wrong parameter"));
+                coordinatesYError.setVisible(true);
+            }
+            else coordinatesYError.setVisible(false);
+            Long studentsCount = asker.ask(Long::valueOf, arg -> arg > 0, studentsCountField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                studentsCountError.setText(rb.getString("wrong parameter"));
+                studentsCountError.setVisible(true);
+            }
+            else studentsCountError.setVisible(false);
+            Integer expelledStudents = asker.ask(Integer::valueOf, arg -> arg > 0, expelledStudentsField.getText(), true);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                expelledStudentsError.setText(rb.getString("wrong parameter"));
+                expelledStudentsError.setVisible(true);
+            }
+            else expelledStudentsError.setVisible(false);
+            int shouldBeExpelled = asker.ask(Integer::valueOf, arg -> arg > 0, shouldBeExpelledField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                shouldBeExpelledError.setText(rb.getString("wrong parameter"));
+                shouldBeExpelledError.setVisible(true);
+            }
+            else shouldBeExpelledError.setVisible(false);
+            Semester semester = asker.ask(Semester::valueOf, arg -> true, semesterField.getText(), true);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                semesterError.setText(rb.getString("wrong parameter"));
+                semesterError.setVisible(true);
+            }
+            else semesterError.setVisible(false);
+            String adminName = asker.ask(arg -> arg, arg -> arg.length() > 0, adminNameField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                adminNameError.setText(rb.getString("wrong parameter"));
+                adminNameError.setVisible(true);
+            }
+            else adminNameError.setVisible(false);
+            Long height = asker.ask(Long::valueOf, arg -> arg > 0, heightField.getText(), true);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                heightError.setText(rb.getString("wrong parameter"));
+                heightError.setVisible(true);
+            }
+            else heightError.setVisible(false);
+            Color hairColor = asker.ask(Color::valueOf, arg -> true, hairColorField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                hairColorError.setText(rb.getString("wrong parameter"));
+                hairColorError.setVisible(true);
+            }
+            else hairColorError.setVisible(false);
+            Country nationality = asker.ask(Country::valueOf, arg -> true, nationalityField.getText(), true);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                nationalityError.setText(rb.getString("wrong parameter"));
+                nationalityError.setVisible(true);
+            }
+            else nationalityError.setVisible(false);
+            Double locationX = asker.ask(Double::valueOf, arg -> true, locationXField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                locationXError.setText(rb.getString("wrong parameter"));
+                locationXError.setVisible(true);
+            }
+            else locationXError.setVisible(false);
+            Double locationY = asker.ask(Double::valueOf, arg -> true, locationYField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                locationYError.setText(rb.getString("wrong parameter"));
+                locationYError.setVisible(true);
+            }
+            else locationYError.setVisible(false);
+            double locationZ = asker.ask(Double::valueOf, arg -> true, locationZField.getText(), false);
+            if (!asker.response.equals("")){
+                perfectInput = false;
+                locationZError.setText(rb.getString("wrong parameter"));
+                locationZError.setVisible(true);
+            }
+            else locationZError.setVisible(false);
+            if (perfectInput) {
+                StudyGroup st = new StudyGroup(name, new Coordinates(coordinatesX, coordinatesY), studentsCount, expelledStudents,
+                        shouldBeExpelled, semester, new Person(adminName, height, hairColor, nationality, new Location(locationX, locationY, locationZ)));
+                Response response = LoginController.client.insert(Long.valueOf(keyField.getText()), st);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(rb.getString("insert"));
+                alert.setHeaderText(rb.getString("answer:"));
+                alert.setContentText(rb.getString(response.getMessage()));
+                alert.showAndWait();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NumberOutOfBoundsException e) {
+            e.printStackTrace();
+        } catch (NullValueException e) {
+            e.printStackTrace();
+        }
     }
 }

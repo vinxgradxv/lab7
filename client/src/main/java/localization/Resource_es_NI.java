@@ -81,7 +81,11 @@ public class Resource_es_NI extends ListResourceBundle {
             {"send", "enviar"},
             {"error", "error"},
             {"collection cleaned", "colección limpiada"},
-            {"no elements in collection", "sin elementos en la colección"}
+            {"no elements in collection", "sin elementos en la colección"},
+            {"element with this key already exists", "El elemento con esta clave ya existe"},
+            {"element added to the collection", "elemento agregado a la colección"},
+            {"element was not added to the collection", "El elemento no se agregó a la colección"},
+            {"key", "Chiave"}
 
 
 
