@@ -46,6 +46,7 @@ public class StCountAskerController {
                     }
                 }
                     TableAnswerController.rb = rb;
+                    System.out.println(response.getStudyGroups().length);
                     TableAnswerController.studyGroups = response.getStudyGroups();
                     Stage stage = new Stage();
                     Parent root = FXMLLoader.load(getClass().getResource("tableAnswer.fxml"), rb);

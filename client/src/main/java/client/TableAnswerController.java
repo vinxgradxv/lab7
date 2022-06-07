@@ -69,7 +69,8 @@ public class TableAnswerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        studyGroups = LoginController.client.getElements().getStudyGroups();
+        table.getItems().removeAll(table.getItems());
+        table.refresh();
         id.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(NumberFormat.getInstance(rb.getLocale()).format(cellData.getValue().getId())));
         name.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getName()));
         coordinatesX.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(NumberFormat.getInstance(rb.getLocale()).format(cellData.getValue().getCoordinates().getX())));
@@ -92,6 +93,7 @@ public class TableAnswerController implements Initializable {
         for(StudyGroup st:studyGroups) {
             table.getItems().add(st);
         }
-
     }
+
+
 }

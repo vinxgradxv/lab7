@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import sun.security.provider.Sun;
 import utils.Response;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
@@ -198,15 +199,18 @@ public class TableController implements Initializable {
     private void updateTable(){
         try {
             while (true) {
-                isInRequest = true;
-                StudyGroup[] studyGroups1 = LoginController.client.getElements().getStudyGroups();
-                isInRequest = false;
-                table.getItems().removeAll(studyGroups);
-                for (StudyGroup st : studyGroups1) {
-                    table.getItems().add(st);
+                StudyGroup[] studyGroups1 = null;
+                if (!isInRequest) {
+                    isInRequest = true;
+                    studyGroups1 = LoginController.client.getElements().getStudyGroups();
+                    isInRequest = false;
+                    table.getItems().removeAll(studyGroups);
+                    for (StudyGroup st : studyGroups1) {
+                        table.getItems().add(st);
+                    }
+                    studyGroups = studyGroups1;
+                    Thread.sleep(10000);
                 }
-                studyGroups = studyGroups1;
-                Thread.sleep(20000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -218,7 +222,9 @@ public class TableController implements Initializable {
         Response response = null;
         while (true) {
             if (!isInRequest){
+                isInRequest = true;
                 response = LoginController.client.clear();
+                isInRequest = false;
                 break;
             }
         }
@@ -256,6 +262,20 @@ public class TableController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    public void onRemoveGreaterKeyButtonAction(){
+        try {
+            KeyAskerController.rb = rb;
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("parameterAskerKey.fxml"), rb);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

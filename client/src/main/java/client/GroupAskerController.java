@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import utils.Asker;
 import utils.Response;
@@ -209,7 +210,9 @@ public class GroupAskerController implements Initializable {
                 Response response = null;
                 while (true) {
                     if (!TableController.isInRequest) {
+                        TableController.isInRequest = true;
                         response = LoginController.client.insert(key, st);
+                        TableController.isInRequest = false;
                         break;
                     }
                 }

@@ -152,6 +152,19 @@ public class Client {
         return null;
     }
 
+    public Response removeGreaterKey(Long key){
+        try {
+            Message message = new Message(new RemoveGreaterKeyCommand(), key, null, currentUser);
+            sendManager.sendMessage(message);
+            return receiveManager.receiveMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
 

@@ -90,7 +90,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="removeGreaterKeyButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%remove greater key" textAlignment="CENTER">
+                        <Button fx:id="removeGreaterKeyButton" mnemonicParsing="false" onAction="#onRemoveGreaterKeyButtonAction" prefHeight="25.0" prefWidth="150.0" text="%remove greater key" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>

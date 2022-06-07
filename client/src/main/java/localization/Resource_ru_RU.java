@@ -87,7 +87,9 @@ public class Resource_ru_RU extends ListResourceBundle {
             {"element added to the collection", "элемент добавлен в коллекцию"},
             {"element was not added to the collection", "элемент не был добавлен"},
             {"key", "ключ"},
-            {"input students count", "введите количество студентов"}
+            {"input students count", "введите количество студентов"},
+            {"input key", "введите ключ"},
+            {"success", "успешно"}
 
 
 

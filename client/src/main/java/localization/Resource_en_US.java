@@ -61,6 +61,7 @@ public class Resource_en_US extends ListResourceBundle {
             {"sum of students count", "sum of students count"},
 
 
+
             {"information about the collection", "information about the collection"},
             {"information about commands", "information about commands"},
             {"shows map representation of collection", "shows map representation of collection"},
@@ -88,7 +89,9 @@ public class Resource_en_US extends ListResourceBundle {
             {"element added to the collection", "element added to the collection"},
             {"element was not added to the collection", "element was not added to the collection"},
             {"key", "key"},
-            {"input students count", "input students count"}
+            {"input students count", "input students count"},
+            {"input key", "input key"},
+            {"success", "success"}
     };
 
     @Override

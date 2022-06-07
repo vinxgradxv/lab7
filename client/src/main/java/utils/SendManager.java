@@ -18,7 +18,7 @@ public class SendManager {
         this.port = port;
     }
 
-    public void sendMessage(Message message) throws IOException {
+    public synchronized void sendMessage(Message message) throws IOException {
         byte[] buff = serialize(message);
         byte[] buffSize = serialize(buff.length);
         DatagramPacket sizePacket = new DatagramPacket(buffSize, buffSize.length, address, port);

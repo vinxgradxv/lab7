@@ -87,7 +87,9 @@ public class Resource_sr_SR extends ListResourceBundle {
             {"element added to the collection", "Елемент је додат у колекцију"},
             {"element was not added to the collection", "Елемент није додан у колекцију"},
             {"кључ", "кључ"},
-            {"input students count", "Улазни студенти се рачунају"}
+            {"input students count", "Улазни студенти се рачунају"},
+            {"input key", "кључ за унос"},
+            {"success", "успех"}
 
 
 

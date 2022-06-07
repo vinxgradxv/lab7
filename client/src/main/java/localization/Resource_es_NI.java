@@ -86,7 +86,9 @@ public class Resource_es_NI extends ListResourceBundle {
             {"element added to the collection", "elemento agregado a la colección"},
             {"element was not added to the collection", "El elemento no se agregó a la colección"},
             {"key", "Chiave"},
-            {"input students count", "Gli stuphi di input contano"}
+            {"input students count", "Gli stuphi di input contano"},
+            {"input key", "clave de entrada"},
+            {"success", "éxito"}
 
 
 
