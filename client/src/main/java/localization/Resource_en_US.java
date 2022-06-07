@@ -80,7 +80,10 @@ public class Resource_en_US extends ListResourceBundle {
             {"wrong parameter", "wrong parameter"},
             {"parameter", "parameter"},
             {"input semester", "input semester"},
-            {"send", "send"}
+            {"send", "send"},
+            {"error", "error"},
+            {"collection cleaned", "collection cleaned"},
+            {"no elements in collection", "no elements in collection"}
     };
 
     @Override

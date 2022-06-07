@@ -13,12 +13,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import sun.security.provider.Sun;
 import utils.Response;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -26,6 +28,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
 
 public class TableController implements Initializable {
 
@@ -85,6 +88,12 @@ public class TableController implements Initializable {
 
     private StudyGroup[] studyGroups;
 
+    private boolean isInRequest = false;
+
+
+    private Thread thread = new Thread(this::updateTable);
+
+
     @Override
     public void initialize(URL loc, ResourceBundle resources) {
         studyGroups = LoginController.client.getElements().getStudyGroups();
@@ -105,12 +114,13 @@ public class TableController implements Initializable {
         locationY.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(NumberFormat.getInstance(rb.getLocale()).format(cellData.getValue().getGroupAdmin().getLocation().getY())));
         locationZ.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(NumberFormat.getInstance(rb.getLocale()).format(cellData.getValue().getGroupAdmin().getLocation().getZ())));
         user.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getUser().getLogin()));
-        /*location.getColumns().addAll(locationX, locationY, locationZ);
-        adminName.getColumns().addAll(adminName, height, hairColor, nationality, location);
-        coordinates.getColumns().addAll(coordinatesX, coordinatesY);*/
+
+
         for(StudyGroup st:studyGroups) {
             table.getItems().add(st);
         }
+
+        thread.start();
 
     }
 
@@ -123,6 +133,7 @@ public class TableController implements Initializable {
             stage.setTitle(rb.getString("help"));
             stage.initModality(Modality.WINDOW_MODAL);
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -131,6 +142,7 @@ public class TableController implements Initializable {
     @FXML
     public void onSumButtonAction() {
         try {
+
             int sum = 0;
             for (StudyGroup st : studyGroups) {
                 sum += st.getStudentsCount();
@@ -175,6 +187,54 @@ public class TableController implements Initializable {
             ParameterAskerController.rb = rb;
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("parameterAsker.fxml"), rb);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateTable(){
+        try {
+            while (true) {
+                isInRequest = true;
+                StudyGroup[] studyGroups1 = LoginController.client.getElements().getStudyGroups();
+                isInRequest = false;
+                table.getItems().removeAll(studyGroups);
+                for (StudyGroup st : studyGroups1) {
+                    table.getItems().add(st);
+                }
+                studyGroups = studyGroups1;
+                Thread.sleep(20000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onClearButtonAction(){
+        Response response = null;
+        while (true) {
+            if (!isInRequest){
+                response = LoginController.client.clear();
+                break;
+            }
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(rb.getString("clear"));
+        alert.setHeaderText(rb.getString("answer:"));
+        alert.setContentText(rb.getString(response.getMessage()));
+        alert.showAndWait();
+    }
+
+    @FXML
+    public void onInsertButtonAction(){
+        try {
+            GroupAskerController.rb = rb;
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("groupAsker.fxml"), rb);
             stage.setScene(new Scene(root));
             stage.initModality(Modality.WINDOW_MODAL);
             stage.show();

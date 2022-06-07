@@ -6,24 +6,20 @@ import java.util.function.Predicate;
 
 public class Asker {
 
-    IOManager ioManager;
 
-    public Asker(IOManager ioManager){
-        this.ioManager = ioManager;
+
+    public String response = "";
+
+    public Asker(){
     }
 
     public <T> T ask(Function<String, T> function,
                        Predicate<T> predicate,
-                       String message,
-                       String negativeResponse,
+                       String input,
                        boolean nullable) throws IOException {
-
         T value = null;
-        while (true){
-            ioManager.println(message);
-            ioManager.prompt();
+        response = "";
             try {
-                String input = ioManager.readLine();
                 if (input.equals("") && nullable) {
                     return null;
                 }
@@ -31,16 +27,12 @@ public class Asker {
                 if (predicate.test(value)){
                     return value;
                 }
-                else {
-                    ioManager.printerr(negativeResponse);
-                }
             }catch (IllegalArgumentException e){
-                ioManager.printerr("Значение неверного формата");
+                response = "Значение неверного формата";
             }
             catch (NullPointerException e){
-                ioManager.printerr("Значение не может быть null");
+                response = "Значение не может быть null";
             }
-        }
-
+        return value;
     }
 }

@@ -65,12 +65,12 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="insertButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%insert" textAlignment="CENTER">
+                        <Button fx:id="insertButton" mnemonicParsing="false" onAction="#onInsertButtonAction" prefHeight="25.0" prefWidth="150.0" text="%insert" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="clearButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="%clear" textAlignment="CENTER">
+                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#onClearButtonAction" prefHeight="25.0" prefWidth="150.0" text="%clear" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>

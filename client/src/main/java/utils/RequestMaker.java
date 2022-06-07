@@ -46,7 +46,7 @@ public class RequestMaker {
             }
 
             if (properCommand.isElementRequired) {
-                studyGroup = new AskStudyGroup(ioManager).getStudyGroupFromUser();
+                // studyGroup = new AskStudyGroup(ioManager).getStudyGroupFromUser();
                 studyGroup.setUser(user);
             }
 

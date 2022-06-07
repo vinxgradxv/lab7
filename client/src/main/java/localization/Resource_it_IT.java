@@ -92,7 +92,10 @@ public class Resource_it_IT extends ListResourceBundle {
             {"wrong parameter", "parametro errato"},
             {"parameter", "parametro"},
             {"input semester", "inserisci il semestre"},
-            {"send", "inviare"}
+            {"send", "inviare"},
+            {"error", "errore"},
+            {"collection cleaned", "raccolta pulita"},
+            {"no elements in collection", "nessun elemento nella collezione"}
 
 
 

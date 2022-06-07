@@ -43,11 +43,11 @@ public class ClearCommand extends Command{
         studyGroupCollection.setCurrentUser(user);
         int count = studyGroupCollection.clean();
         if(count > 0){
-            return new Response(ResponseType.RESULT, "Коллекция очищена", user, null);
+            return new Response(ResponseType.RESULT, "collection cleaned", user, null);
         }
         else if (count == 0) {
-            return new Response(ResponseType.ERROR, "В коллекции нет элементов", user, null);
+            return new Response(ResponseType.ERROR, "no elements in collection", user, null);
         }
-        else return new Response(ResponseType.ERROR, "произошла ошибка во время проведения операции", user, null);
+        else return new Response(ResponseType.ERROR, "error", user, null);
     }
 }

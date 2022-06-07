@@ -15,8 +15,11 @@ import java.util.ResourceBundle;
 public class LoginApp extends Application {
 
 
+    public static Stage stage;
+
     @Override
     public void start(Stage stage) throws IOException {
+        LoginApp.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(LoginApp.class.getResource("settings.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);

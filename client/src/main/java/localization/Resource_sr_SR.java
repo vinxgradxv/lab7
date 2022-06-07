@@ -79,7 +79,10 @@ public class Resource_sr_SR extends ListResourceBundle {
             {"wrong parameter", "погрешан параметар"},
             {"parameter", "параметар"},
             {"input semester", "унесите семестар"},
-            {"send", "пошаљи"}
+            {"send", "пошаљи"},
+            {"error", "грешка"},
+            {"collection cleaned", "колекција очишћена"},
+            {"no elements in collection", "нема елемената у колекцији"}
 
 
 

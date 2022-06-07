@@ -2,6 +2,7 @@ package client;
 
 import commands.*;
 import data.Semester;
+import data.StudyGroup;
 import data.User;
 import exceptions.NullValueException;
 import exceptions.NumberOutOfBoundsException;
@@ -111,6 +112,33 @@ public class Client {
         }
         return null;
     }
+
+    public Response clear(){
+        try {
+            Message message = new Message(new ClearCommand(), null, null, currentUser);
+            sendManager.sendMessage(message);
+            return receiveManager.receiveMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Response insert(Long key, StudyGroup studyGroup){
+        try {
+            Message message = new Message(new InsertCommand(), key, studyGroup, currentUser);
+            sendManager.sendMessage(message);
+            return receiveManager.receiveMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
 

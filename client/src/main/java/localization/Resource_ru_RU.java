@@ -79,7 +79,10 @@ public class Resource_ru_RU extends ListResourceBundle {
             {"wrong parameter", "неверный параметр"},
             {"parameter", "параметр"},
             {"input semester", "введите семестр"},
-            {"send", "отправить"}
+            {"send", "отправить"},
+            {"error", "ошибка"},
+            {"collection cleaned", "коллекция очищена"},
+            {"no elements in collection", "нет элементов"}
 
 
     };

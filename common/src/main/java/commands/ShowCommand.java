@@ -38,7 +38,7 @@ public class ShowCommand extends Command{
     public Response execute(Object param, StudyGroup studyGroup, CollectionManager studyGroupCollection, User user){
         StudyGroup[] studyGroups = new StudyGroup[studyGroupCollection.getStudyGroupHashTable().size()];
         if (studyGroupCollection.getStudyGroupHashTable().isEmpty()){
-            return new Response(ResponseType.ERROR, "В коллекции нет элементов", user, null);
+            return new Response(ResponseType.ERROR, "В коллекции нет элементов", user, studyGroups);
         }
         String result = "";
         int i = 0;
